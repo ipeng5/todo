@@ -10,7 +10,48 @@
 </head>
 
 <body>
-    hello
+    <header class="header">
+        <img src="" alt="" class="header header__logo">
+        <h1 class="header header__text">ToDo</h1>
+    </header>
+    <nav class="sidebar">
+        <ul class="sidebar__filter">
+            <li class="sidebar__filter-option">All</li>
+            <li class="sidebar__filter-option">Today</li>
+            <li class="sidebar__filter-option">This week</li>
+        </ul>
+        <h2 class="sidebar__projects--title">Projects</h2>
+        <ul class="sidebar__projects">
+            <li class="sidebar__projects-name">Project A</li>
+            <li class="sidebar__projects-name">Project B</li>
+        </ul>
+        <div class="new-item">&plus;</div>
+    </nav>
+    <main class="container">
+        <div class="todo-item todo-item--high">
+            <input type="checkbox" class="checkbox">
+            <p class="todo-item__title todo-item__title--checked">Task 1</p>
+            <p class="todo-item__date">Nov-10-2022</p>
+            <svg class="todo-item__icon todo-item__icon--edit"></svg>
+            <svg class="todo-item__icon todo-item__icon--delete"></svg>
+        </div>
+
+        <div class="todo-item todo-item--medium">
+            <input type="checkbox" class="checkbox">
+            <p class="todo-item__title todo-item__title--checked">Task 1</p>
+            <p class="todo-item__date">Nov-10-2022</p>
+            <svg class="todo-item__icon todo-item__icon--edit"></svg>
+            <svg class="todo-item__icon todo-item__icon--delete"></svg>
+        </div>
+
+        <div class="todo-item todo-item--low">
+            <input type="checkbox" class="checkbox">
+            <p class="todo-item__title todo-item__title--checked">Task 1</p>
+            <p class="todo-item__date">Nov-10-2022</p>
+            <svg class="todo-item__icon todo-item__icon--edit"></svg>
+            <svg class="todo-item__icon todo-item__icon--delete"></svg>
+        </div>
+    </main>
 </body>
 
 </html>
