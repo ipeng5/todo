@@ -7,103 +7,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@500&family=Lato:wght@300;400&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="pencil.svg">
     <script defer src="main.js"></script>
-    <title>ToDo</title>
+    <title>todo</title>
 </head>
 
 <body class="content">
 
     <header class="header">
         <img src="" alt="" class="header header__logo">
-        <h1 class="header header__text heading-1">ToDo</h1>
+        <h1 class="header header__text heading-1">
+            <svg class="icon--pencil">
+                <use href="sprite.svg#icon-pencil"></use>
+            </svg>
+            todo
+        </h1>
     </header>
     <nav class="sidebar">
         <div class="sidebar__content">
             <ul class="sidebar__filter">
-                <li class="sidebar__filter-option sidebar__filter-option--active heading-2">All</li>
-                <li class="sidebar__filter-option heading-2">Today</li>
-                <li class="sidebar__filter-option heading-2">This week</li>
-                <li class="sidebar__filter-option heading-2">Completed</li>
+                <li class="sidebar__filter-option sidebar__filter-option--active heading-4">
+                    <svg class="icon ">
+                        <use href="sprite.svg#icon-menu"></use>
+                    </svg>
+                    All
+                </li>
+                <li class="sidebar__filter-option heading-4">
+                    <svg class="icon ">
+                        <use href="sprite.svg#icon-date-add"></use>
+                    </svg>
+                    Today
+                </li>
+                <li class="sidebar__filter-option heading-4">
+                    <svg class="icon ">
+                        <use href="sprite.svg#icon-calendar"></use>
+                    </svg>
+                    Next 7 days
+                </li>
+
             </ul>
-            <select name="project-list" id="project-list" class="sidebar__projects heading-3">
-                <option disabled selected value>Filter by project</option>
-                <option value="project a">Project A</option>
-                <option value="project b">Project B</option>
-                <option value="project c">Project C</option>
-            </select>
+            <div class="sidebar__project-group">
+                <h2 class="heading-2">Projects</h2>
+                <ul class="projects">
+                    <li class="projects-item sidebar__filter-option heading-4">
+                        <svg class="icon ">
+                            <use href="sprite.svg#icon-format_list_bulleted"></use>
+                        </svg>
+                        Project 1
+                        <svg class="icon projects-item--delete icon--delete">
+                            <use href="sprite.svg#icon-bin"></use>
+                        </svg>
+                    </li>
+                    <li class="projects-item sidebar__filter-option heading-4">
+                        <svg class="icon ">
+                            <use href="sprite.svg#icon-format_list_bulleted"></use>
+                        </svg>
+                        Project 2
+                        <svg class="icon projects-item--delete icon--delete">
+                            <use href="sprite.svg#icon-bin"></use>
+                        </svg>
+                    </li>
+                    <li class="projects-item sidebar__filter-option heading-4">
+                        <svg class="icon ">
+                            <use href="sprite.svg#icon-format_list_bulleted"></use>
+                        </svg>
+                        Project 3
+                        <svg class="icon projects-item--delete icon--delete">
+                            <use href="sprite.svg#icon-bin"></use>
+                        </svg>
+                    </li>
+
+                    <div class="popup popup__project">
+                        <input type="text" class="popup__input popup__input--project" placeholder="Project name">
+                        <div class="popup__btns">
+                            <button class="btn btn--cancel">Cancel</button>
+                            <button class="btn btn--add">Add</button>
+                        </div>
+                    </div>
+
+
+                    <div class="add-item heading-3">
+                        <svg class="icon">
+                            <use href="sprite.svg#icon-plus"></use>
+                        </svg>
+                        Create project
+                    </div>
+                </ul>
+
+
+            </div>
         </div>
-        <div class="sidebar__new">&plus;</div>
+
     </nav>
     <main class="container">
-
-        <div class="todo-item todo-item--high">
+        <h2 class="todo-item--project ">Work</h2>
+        <div class="todo-item">
             <div class="todo-item__head">
-                <input type="checkbox" id="checkbox-high" class="checkbox__box">
-                <label for="checkbox-high" class="checkbox__label">
+                <input type="checkbox" id="checkbox" class="checkbox__box">
+                <label for="checkbox" class="checkbox__label">
                     <span class="checkbox__btn"></span>
                 </label>
-                <p class="todo-item__title todo-item__title--checked heading-3">Task 1 - grocery shopping</p>
+                <p class="todo-item__title heading-3">Task 1 - grocery shopping</p>
             </div>
-            <div class="todo-item__details">
-                <p class="todo-item__date heading-3">Nov-10-2022</p>
-                <!-- <svg class="todo-item__icon todo-item__icon--edit"></svg>
-                <svg class="todo-item__icon todo-item__icon--delete"></svg> -->
+            <p class="todo-item__date heading-3">Nov-10-2022</p>
+        </div>
+
+        <div class="popup__task">
+            <div class="task-input">
+                <input type="text" class="popup__input task-input--name">
+                <input type="date" class="popup__input task-input--date">
+            </div>
+            <div class="popup__btns">
+                <button class="btn btn--cancel">Cancel</button>
+                <button class="btn btn--add">Add</button>
             </div>
         </div>
 
-        <div class="todo-item todo-item--medium">
-            <div class="todo-item__head">
-                <input type="checkbox" id="checkbox-medium" class="checkbox__box">
-                <label for="checkbox-medium" class="checkbox__label">
-                    <span class="checkbox__btn"></span>
-                </label>
-                <p class="todo-item__title todo-item__title--checked heading-3">Task 1 - grocery shopping</p>
-            </div>
-            <div class="todo-item__details">
-                <p class="todo-item__date heading-3">Nov-10-2022</p>
-                <!-- <svg class="todo-item__icon todo-item__icon--edit"></svg>
-                <svg class="todo-item__icon todo-item__icon--delete"></svg> -->
-            </div>
-        </div>
 
-        <div class="todo-item todo-item--low">
-            <div class="todo-item__head">
-                <input type="checkbox" id="checkbox-low" class="checkbox__box">
-                <label for="checkbox-low" class="checkbox__label">
-                    <span class="checkbox__btn"></span>
-                </label>
-                <p class="todo-item__title todo-item__title--checked heading-3">Task 1 - grocery shopping</p>
-            </div>
-            <div class="todo-item__details">
-                <p class="todo-item__date heading-3">Nov-10-2022</p>
-                <!-- <svg class="todo-item__icon todo-item__icon--edit"></svg>
-                <svg class="todo-item__icon todo-item__icon--delete"></svg> -->
-            </div>
+
+        <div class="add-item add-item--task heading-3">
+            <svg class="icon">
+                <use href="sprite.svg#icon-plus"></use>
+            </svg>
+            Add task
         </div>
 
 
     </main>
 
-    <!-- <div class="popup popup--new">
-        <div class="popup__content">
-            <form action="#" class="popup__form">
-                <input type="text" id="title" class="form__input">
-                <label for="description" class="form__label">Description</label>
-                <textarea name="description" id="description" cols="30" rows="10"></textarea>
-                <label for="date" class="form__label">Due date</label>
-                <input type="date" id="date" class="form__input">
-                <label for="priority" class="form__label">High</label>
-                <input type="priority" name="priority" id="priority" class="form__priority">
-                <label for="priority" class="form__label">Medium</label>
-                <input type="priority" name="priority" id="priority" class="form__priority">
-                <label for="priority" class="form__label">Low</label>
-                <input type="priority" name="priority" id="priority" class="form__priority">
-                <button class="btn btn--cancel">Cancel</button>
-                <button class="btn btn--add">Add</button>
-            </form>
-        </div>
-    </div> -->
+
 </body>
 
 </html>

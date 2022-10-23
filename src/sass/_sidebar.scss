@@ -1,50 +1,28 @@
 .sidebar {
   &__filter-option {
     list-style: none;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 2.2rem;
 
     &--active {
       background-color: $color-primary-light;
     }
 
     &:hover {
-      background-color: $color-primary-light;
+      background-color: $color-grey-light-2;
     }
   }
+}
 
-  &__projects {
-    width: 100%;
-    padding: 1rem 0.8rem;
-    border: 2px solid $color-primary-light;
-    border-radius: 5px;
-    color: $color-grey-light-3;
-    margin-top: 2rem;
-    outline: none;
-  }
-
-  &__new {
-    background-color: $color-primary;
-    width: 8rem;
-    height: 8rem;
-    border-radius: 50%;
-    color: white;
-    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 8rem;
-    padding-bottom: 0.4rem;
-    cursor: pointer;
-    transition: all 0.2s;
-
-    &:hover {
-      transform: translateY(-0.3rem);
-    }
-
-    &:active {
-      transform: translateY(0);
-      box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
-    }
+.projects-item {
+  &--delete {
+    margin-left: auto;
+    fill: $color-grey-dark-1;
+    position: relative;
+    z-index: 3;
   }
 }
