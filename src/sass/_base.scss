@@ -1,4 +1,34 @@
-// variables
+$color-primary: #94b5fa;
+$color-primary-light: #dcecfd;
+// $color-primary-dark: #5083f2;
+$color-grey-light-1: #f7f7f7;
+// $color-grey-light-2: #fafafa;
+$color-grey-light-3: #aaa;
+$color-grey-dark-1: #999;
+$color-grey-dark-2: #414342;
+// $color-grey-dark-3: #333;
+
+$color-priority-high: #db2159;
+$color-priority-medium: #fcbe03;
+$color-priority-low: #48d4a1;
+
+$font-primary: 'Lato', sans-serif;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
 body {
-  background-color: gray;
+  font-family: $font-primary;
+  font-weight: 400;
+  color: $color-grey-dark-2;
 }

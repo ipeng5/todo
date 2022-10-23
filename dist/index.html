@@ -5,53 +5,105 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <script defer src="main.js"></script>
     <title>ToDo</title>
 </head>
 
-<body>
+<body class="content">
+
     <header class="header">
         <img src="" alt="" class="header header__logo">
-        <h1 class="header header__text">ToDo</h1>
+        <h1 class="header header__text heading-1">ToDo</h1>
     </header>
     <nav class="sidebar">
-        <ul class="sidebar__filter">
-            <li class="sidebar__filter-option">All</li>
-            <li class="sidebar__filter-option">Today</li>
-            <li class="sidebar__filter-option">This week</li>
-        </ul>
-        <h2 class="sidebar__projects--title">Projects</h2>
-        <ul class="sidebar__projects">
-            <li class="sidebar__projects-name">Project A</li>
-            <li class="sidebar__projects-name">Project B</li>
-        </ul>
-        <div class="new-item">&plus;</div>
+        <div class="sidebar__content">
+            <ul class="sidebar__filter">
+                <li class="sidebar__filter-option sidebar__filter-option--active heading-2">All</li>
+                <li class="sidebar__filter-option heading-2">Today</li>
+                <li class="sidebar__filter-option heading-2">This week</li>
+                <li class="sidebar__filter-option heading-2">Completed</li>
+            </ul>
+            <select name="project-list" id="project-list" class="sidebar__projects heading-3">
+                <option disabled selected value>Filter by project</option>
+                <option value="project a">Project A</option>
+                <option value="project b">Project B</option>
+                <option value="project c">Project C</option>
+            </select>
+        </div>
+        <div class="sidebar__new">&plus;</div>
     </nav>
     <main class="container">
+
         <div class="todo-item todo-item--high">
-            <input type="checkbox" class="checkbox">
-            <p class="todo-item__title todo-item__title--checked">Task 1</p>
-            <p class="todo-item__date">Nov-10-2022</p>
-            <svg class="todo-item__icon todo-item__icon--edit"></svg>
-            <svg class="todo-item__icon todo-item__icon--delete"></svg>
+            <div class="todo-item__head">
+                <input type="checkbox" id="checkbox-high" class="checkbox__box">
+                <label for="checkbox-high" class="checkbox__label">
+                    <span class="checkbox__btn"></span>
+                </label>
+                <p class="todo-item__title todo-item__title--checked heading-3">Task 1 - grocery shopping</p>
+            </div>
+            <div class="todo-item__details">
+                <p class="todo-item__date heading-3">Nov-10-2022</p>
+                <!-- <svg class="todo-item__icon todo-item__icon--edit"></svg>
+                <svg class="todo-item__icon todo-item__icon--delete"></svg> -->
+            </div>
         </div>
 
         <div class="todo-item todo-item--medium">
-            <input type="checkbox" class="checkbox">
-            <p class="todo-item__title todo-item__title--checked">Task 1</p>
-            <p class="todo-item__date">Nov-10-2022</p>
-            <svg class="todo-item__icon todo-item__icon--edit"></svg>
-            <svg class="todo-item__icon todo-item__icon--delete"></svg>
+            <div class="todo-item__head">
+                <input type="checkbox" id="checkbox-medium" class="checkbox__box">
+                <label for="checkbox-medium" class="checkbox__label">
+                    <span class="checkbox__btn"></span>
+                </label>
+                <p class="todo-item__title todo-item__title--checked heading-3">Task 1 - grocery shopping</p>
+            </div>
+            <div class="todo-item__details">
+                <p class="todo-item__date heading-3">Nov-10-2022</p>
+                <!-- <svg class="todo-item__icon todo-item__icon--edit"></svg>
+                <svg class="todo-item__icon todo-item__icon--delete"></svg> -->
+            </div>
         </div>
 
         <div class="todo-item todo-item--low">
-            <input type="checkbox" class="checkbox">
-            <p class="todo-item__title todo-item__title--checked">Task 1</p>
-            <p class="todo-item__date">Nov-10-2022</p>
-            <svg class="todo-item__icon todo-item__icon--edit"></svg>
-            <svg class="todo-item__icon todo-item__icon--delete"></svg>
+            <div class="todo-item__head">
+                <input type="checkbox" id="checkbox-low" class="checkbox__box">
+                <label for="checkbox-low" class="checkbox__label">
+                    <span class="checkbox__btn"></span>
+                </label>
+                <p class="todo-item__title todo-item__title--checked heading-3">Task 1 - grocery shopping</p>
+            </div>
+            <div class="todo-item__details">
+                <p class="todo-item__date heading-3">Nov-10-2022</p>
+                <!-- <svg class="todo-item__icon todo-item__icon--edit"></svg>
+                <svg class="todo-item__icon todo-item__icon--delete"></svg> -->
+            </div>
         </div>
+
+
     </main>
+
+    <!-- <div class="popup popup--new">
+        <div class="popup__content">
+            <form action="#" class="popup__form">
+                <input type="text" id="title" class="form__input">
+                <label for="description" class="form__label">Description</label>
+                <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                <label for="date" class="form__label">Due date</label>
+                <input type="date" id="date" class="form__input">
+                <label for="priority" class="form__label">High</label>
+                <input type="priority" name="priority" id="priority" class="form__priority">
+                <label for="priority" class="form__label">Medium</label>
+                <input type="priority" name="priority" id="priority" class="form__priority">
+                <label for="priority" class="form__label">Low</label>
+                <input type="priority" name="priority" id="priority" class="form__priority">
+                <button class="btn btn--cancel">Cancel</button>
+                <button class="btn btn--add">Add</button>
+            </form>
+        </div>
+    </div> -->
 </body>
 
 </html>

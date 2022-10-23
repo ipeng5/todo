@@ -1,0 +1,41 @@
+.checkbox {
+  &__box {
+    display: none;
+  }
+
+  &__label {
+    font-size: 2rem;
+    cursor: pointer;
+    position: relative;
+  }
+
+  &__btn {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 5px;
+    border: 3px solid $color-primary;
+    display: inline-block;
+    position: absolute;
+    left: -3rem;
+    top: 0.05rem;
+
+    &::after {
+      content: '';
+      display: block;
+      height: 1rem;
+      width: 1rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+  }
+
+  &__box:checked ~ &__label &__btn::after {
+    opacity: 1;
+    // border-radius: 50%;
+    background-color: $color-primary;
+  }
+}
