@@ -1,0 +1,19 @@
+.add-item {
+  line-height: 4.5rem;
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  gap: 1.5rem;
+  padding: 0 2.2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-grey-light-2;
+  }
+
+  &--task {
+    width: $item-width;
+    height: 6rem;
+  }
+}

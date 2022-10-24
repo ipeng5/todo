@@ -2,15 +2,17 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/js/index.js',
+  entry: {
+    main: path.resolve(__dirname, 'src/js/index.js'),
+  },
   output: {
-    filename: 'main.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.scss$/i,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
