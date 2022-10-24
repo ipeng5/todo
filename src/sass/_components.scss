@@ -10,12 +10,35 @@
     margin-right: 2rem;
   }
 
-  &--delete,
-  &--edit {
-    z-index: 5;
-    position: relative;
+  &--delete {
+    margin-left: auto;
+    fill: $color-grey-dark-1;
+    cursor: pointer;
+    transition: all 0.2s;
+
     &:hover {
-      scale: 1.15;
+      scale: 1.25;
+    }
+  }
+}
+
+.projects {
+  overflow-y: scroll;
+  height: 18rem;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba($color-primary-dark, 0.4);
+
+    &:hover {
+      background: $color-primary-dark;
     }
   }
 }
@@ -27,9 +50,31 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
   transition: all 0.2s;
   background-color: $color-grey-light-1;
+  border-radius: 5px;
+
+  &--completed {
+    text-decoration: line-through;
+    & > * {
+      color: $color-grey-light-3;
+    }
+  }
+
+  &__title {
+    padding-left: 2rem;
+    cursor: pointer;
+  }
+
+  &__details {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__date {
+    cursor: pointer;
+  }
 
   &--project {
     height: 5rem;
@@ -41,12 +86,6 @@
 
   &:hover {
     background-color: $color-primary-light;
-  }
-
-  &__details {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
   }
 }
 
@@ -68,7 +107,7 @@
     border: 3px solid $color-primary;
     display: inline-block;
     position: absolute;
-    left: -3rem;
+    left: -2rem;
     top: 0.3rem;
 
     &::after {
@@ -87,7 +126,6 @@
 
   &__box:checked ~ &__label &__btn::after {
     opacity: 1;
-    // border-radius: 50%;
     background-color: $color-primary;
   }
 }
@@ -99,7 +137,7 @@
   margin-top: 0.5rem;
   gap: 1.5rem;
   padding: 0 2.2rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   cursor: pointer;
 
   &:hover {
@@ -109,7 +147,6 @@
   &--task {
     width: $item-width;
     height: 6rem;
-    border-radius: 0;
   }
 }
 
@@ -128,57 +165,63 @@
     outline: none;
   }
 
-  &__btns {
+  &__task {
+    height: 6rem;
+    width: $item-width;
+    padding: 0 5rem 0 3rem;
     display: flex;
-    justify-content: center;
-    gap: 2rem;
+    align-items: center;
+    background-color: $color-grey-light-1;
 
-    .btn {
-      width: 10rem;
-      padding: 0.5rem 0;
-      cursor: pointer;
-      border-radius: 3px;
-      font-size: 1.8rem;
+    &--name {
+      flex: auto;
+      max-width: 60rem;
+    }
 
-      &--cancel {
-        background-color: white;
-        color: $color-grey-dark-1;
-        border: 2px solid $color-grey-light-3;
+    &--date {
+      margin: 0 auto 0 2rem;
+      flex: 0 0 auto;
+    }
 
-        &:hover {
-          color: $color-primary-dark;
-          border: 2px solid $color-primary-dark;
-        }
-      }
-
-      &--add {
-        background-color: rgba($color-primary-dark, 0.8);
-        color: white;
-        border: 2px solid $color-primary-light;
-
-        &:hover {
-          background-color: $color-primary-dark;
-        }
-      }
+    .btn--cancel {
+      margin-left: 2rem;
     }
   }
 }
 
-.popup__task {
-  height: 6rem;
-  width: $item-width;
-  padding: 0 2rem;
+.popup__btns {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: $color-grey-light-1;
+  justify-content: center;
+  gap: 2rem;
 
-  .task-input {
-    display: flex;
-    gap: 1rem;
+  .btn {
+    width: 10rem;
+    padding: 0.8rem 0;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1.8rem;
 
-    &--name {
-      width: 50rem;
+    &--cancel {
+      background-color: white;
+      color: $color-grey-dark-1;
+      border: 2px solid $color-grey-light-3;
+
+      &:hover {
+        color: $color-primary-dark;
+        border: 2px solid $color-primary-dark;
+        background-color: $color-grey-light-1;
+        background-color: rgba($color-primary-light, 0.2);
+      }
+    }
+
+    &--add {
+      background-color: rgba($color-primary-dark, 0.8);
+      color: white;
+      border: 2px solid $color-primary-light;
+
+      &:hover {
+        background-color: $color-primary-dark;
+      }
     }
   }
 }
