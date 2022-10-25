@@ -1,26 +1,32 @@
 class CategoryPopupView {
-  #parentElement = document.querySelector('.popup-container__category');
-  #btnAddCategory = document.querySelector('.add-item--category');
+  _popup = document.querySelector('.popup__category');
+  _btnOpen = document.querySelector('.add-item--category');
+  _btnCancel = document.querySelector('.category-popup__cancel');
+  _input = document.querySelector('.popup__input--category');
 
-  render() {
-    this.#parentElement.insertAdjacentHTML('afterbegin', this.#generateMarkup());
+  constructor() {
+    this._addHandlerShowPopup();
+    this._addHandlerCancelPopup();
   }
 
-  addHandlerRender(handler) {
-    this.#btnAddCategory.addEventListener('click', handler);
+  showPopup() {
+    this._popup.classList.remove('hidden');
+    this._btnOpen.classList.add('hidden');
+    this._input.focus();
   }
 
-  #generateMarkup() {
-    return `
-        <div class="popup popup-container__category">
-          <input type="text" class="popup__input popup__input--category" maxlength="20" autofocus
-               placeholder="Category name">
-            <div class="popup__btns">
-              <button class="btn btn--cancel">Cancel</button>
-                 <button class="btn btn--add">Add</button>
-          </div>
-        </div>
-        `;
+  cancelPopup() {
+    this._input.value = '';
+    this._popup.classList.add('hidden');
+    this._btnOpen.classList.remove('hidden');
+  }
+
+  _addHandlerShowPopup() {
+    this._btnOpen.addEventListener('click', this.showPopup.bind(this));
+  }
+
+  _addHandlerCancelPopup() {
+    this._btnCancel.addEventListener('click', this.cancelPopup.bind(this));
   }
 }
 

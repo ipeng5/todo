@@ -1,23 +1,23 @@
 import '../styles/main.scss';
 import * as model from './model.js';
 import categoryPopupView from './views/categoryPopupView.js';
-import categoryView from './views/categoryView.js';
 import taskPopupView from './views/taskPopupView.js';
 import taskView from './views/taskView.js';
+import addCategoryView from './views/addCategoryView.js';
+import addTaskView from './views/addTaskView';
 
-const controlCategoryPopup = function () {
-  categoryPopupView.render();
+const controlAddCategory = function (newCategory) {
+  addCategoryView.render(newCategory);
 };
 
-const controlTaskPopup = function () {
-  taskPopupView.render();
+const controlAddTask = function (newTask) {
+  addTaskView.render(newTask);
 };
 
-taskView.render(model.state.task);
-categoryView.render(model.state.task);
+taskView.render(model.state.category.task);
 
 const init = function () {
-  categoryPopupView.addHandlerRender(controlCategoryPopup);
-  taskPopupView.addHandlerRender(controlTaskPopup);
+  addCategoryView.addHandlerCreate(controlAddCategory);
+  addTaskView.addHandlerCreate(controlAddTask);
 };
 init();

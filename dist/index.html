@@ -29,7 +29,7 @@
     <nav class="sidebar">
         <div class="sidebar__content">
             <ul class="sidebar__filter">
-                <li class="sidebar__filter-option sidebar__filter-option--active heading-4">
+                <li class="sidebar__filter-option sidebar__filter-option--active  heading-4">
                     <svg class="icon ">
                         <use href="sprite.svg#icon-menu"></use>
                     </svg>
@@ -77,13 +77,13 @@
 
                 </ul>
 
-                <div class="popup popup-container__category popup__category">
-                    <!-- <input type="text" class="popup__input popup__input--category" maxlength="20"
+                <div class="popup popup__category hidden">
+                    <input type="text" class="popup__input popup__input--category" maxlength="20"
                         placeholder="Category name">
                     <div class="popup__btns">
-                        <button class="btn btn--cancel">Cancel</button>
-                        <button class="btn btn--add">Add</button>
-                    </div> -->
+                        <button class="btn btn--cancel category-popup__cancel">Cancel</button>
+                        <button class="btn btn--add category-popup__add">Add</button>
+                    </div>
                 </div>
 
                 <div class="add-item add-item--category heading-3">
@@ -98,7 +98,7 @@
     </nav>
 
     <main>
-        <h2 class="todo-item--category">All</h2>
+        <h2 class="task--category">All</h2>
         <div class="task-container">
 
             <!-- <div class="todo-item todo-item--completed">
@@ -150,15 +150,13 @@
             </div> -->
 
 
-            <div class="popup-container--task">
-                <!-- <div class="popup__task">
-                    <input type="text" class="popup__input popup__task--name">
-                    <input type="date" class="popup__input popup__task--date">
-                    <div class="popup__btns">
-                        <button class="btn btn--cancel">Cancel</button>
-                        <button class="btn btn--add">Add</button>
-                    </div>
-                </div> -->
+            <div class="popup__task hidden">
+                <input type="text" class="popup__input popup__task--name" placeholder="Task name">
+                <input type="date" class="popup__input popup__task--date">
+                <div class="popup__btns">
+                    <button class="btn btn--cancel task-popup__cancel">Cancel</button>
+                    <button class="btn btn--add task-popup__add">Add</button>
+                </div>
             </div>
 
             <div class="add-item add-item--task heading-3">

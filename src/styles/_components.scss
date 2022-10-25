@@ -76,10 +76,6 @@
   }
 }
 
-.popup-container--task {
-  width: $item-width;
-}
-
 .popup {
   display: flex;
   flex-direction: column;
@@ -93,6 +89,7 @@
     padding: 0 8px;
     font-size: 1.8rem;
     outline: none;
+
   }
 
   &__task {
@@ -101,6 +98,7 @@
     display: flex;
     align-items: center;
     background-color: $color-grey-light-1;
+    width: $item-width;
 
     &--name {
       flex: auto;
@@ -196,7 +194,7 @@
   }
 }
 
-.todo-item {
+.task {
   height: 6rem;
   width: $item-width;
   padding: 0 5rem;
@@ -241,4 +239,8 @@
   &:hover {
     background-color: $color-primary-light;
   }
+}
+
+.hidden {
+  display: none;
 }

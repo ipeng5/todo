@@ -1,9 +1,17 @@
 import View from './View.js';
 
-class TaskView extends View {
+class AddTaskView extends View {
   _parentElement = document.querySelector('.task-container');
+  _btnAdd = document.querySelector('.task-popup__add');
 
-  //   addHandlerRender(handler) {}
+  addHandlerCreate(handler) {
+    this._btnAdd.addEventListener('click', function () {
+      const taskName = document.querySelector('.popup__task--name').value;
+      const dueDate = document.querySelector('.popup__task--date').value;
+      const data = { taskName: taskName, dueDate: dueDate, completed: false };
+      handler(data);
+    });
+  }
 
   _generateMarkup() {
     return `
@@ -26,4 +34,4 @@ class TaskView extends View {
   }
 }
 
-export default new TaskView();
+export default new AddTaskView();

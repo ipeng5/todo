@@ -1,26 +1,32 @@
 class TaskPopupView {
-  #parentElement = document.querySelector('.popup-container--task');
-  #btnAddTask = document.querySelector('.add-item--task');
+  _popup = document.querySelector('.popup__task');
+  _btnOpen = document.querySelector('.add-item--task');
+  _btnCancel = document.querySelector('.task-popup__cancel');
+  _input = document.querySelector('.popup__task--name');
 
-  render() {
-    this.#parentElement.insertAdjacentHTML('afterbegin', this.#generateMarkup());
+  constructor() {
+    this._addHandlerShowPopup();
+    this._addHandlerCancelPopup();
   }
 
-  addHandlerRender(handler) {
-    this.#btnAddTask.addEventListener('click', handler);
+  showPopup() {
+    this._popup.classList.remove('hidden');
+    this._btnOpen.classList.add('hidden');
+    this._input.focus();
   }
 
-  #generateMarkup() {
-    return `
-         <div class="popup__task">
-             <input type="text" class="popup__input popup__task--name">
-             <input type="date" class="popup__input popup__task--date">
-              <div class="popup__btns">
-                 <button class="btn btn--cancel">Cancel</button>
-                <button class="btn btn--add">Add</button>
-            </div>
-           </div>
-        `;
+  cancelPopup() {
+    this._input.value = '';
+    this._popup.classList.add('hidden');
+    this._btnOpen.classList.remove('hidden');
+  }
+
+  _addHandlerShowPopup() {
+    this._btnOpen.addEventListener('click', this.showPopup.bind(this));
+  }
+
+  _addHandlerCancelPopup() {
+    this._btnCancel.addEventListener('click', this.cancelPopup.bind(this));
   }
 }
 
