@@ -51,137 +51,124 @@
                 </li>
             </ul>
 
-            <div class="sidebar__project-group">
-                <h2 class="heading-2">Projects</h2>
-                <ul class="projects">
-                    <li class="projects-item sidebar__filter-option heading-4">
+            <div class="sidebar__category-group">
+                <h2 class="heading-2">Categories</h2>
+                <ul class="category-container">
+                    <li class="categories__item sidebar__filter-option heading-4">
                         <svg class="icon ">
                             <use href="sprite.svg#icon-format_list_bulleted"></use>
                         </svg>
-                        Project 11
-                        <svg class="icon projects-item--delete icon--delete">
+                        Category 11
+                        <svg class="icon categories__item--delete icon--delete">
                             <use href="sprite.svg#icon-bin"></use>
                         </svg>
                     </li>
 
-                    <li class="projects-item sidebar__filter-option heading-4">
+                    <li class="categories__item sidebar__filter-option heading-4">
                         <svg class="icon ">
                             <use href="sprite.svg#icon-format_list_bulleted"></use>
                         </svg>
-                        Project 2
-                        <svg class="icon projects-item--delete icon--delete">
+                        Category 2
+                        <svg class="icon categories__item--delete icon--delete">
                             <use href="sprite.svg#icon-bin"></use>
                         </svg>
                     </li>
 
-                    <li class="projects-item sidebar__filter-option heading-4">
-                        <svg class="icon ">
-                            <use href="sprite.svg#icon-format_list_bulleted"></use>
-                        </svg>
-                        Project 3
-                        <svg class="icon projects-item--delete icon--delete">
-                            <use href="sprite.svg#icon-bin"></use>
-                        </svg>
-                    </li>
 
-                    <li class="projects-item sidebar__filter-option heading-4">
-                        <svg class="icon ">
-                            <use href="sprite.svg#icon-format_list_bulleted"></use>
-                        </svg>
-                        Project 4
-                        <svg class="icon projects-item--delete icon--delete">
-                            <use href="sprite.svg#icon-bin"></use>
-                        </svg>
-                    </li>
                 </ul>
 
-                <div class="popup popup__project">
-                    <input type="text" class="popup__input popup__input--project" placeholder="Project name">
+                <div class="popup popup-container__category popup__category">
+                    <!-- <input type="text" class="popup__input popup__input--category" maxlength="20"
+                        placeholder="Category name">
                     <div class="popup__btns">
                         <button class="btn btn--cancel">Cancel</button>
                         <button class="btn btn--add">Add</button>
-                    </div>
+                    </div> -->
                 </div>
 
-                <div class="add-item heading-3">
+                <div class="add-item add-item--category heading-3">
                     <svg class="icon">
                         <use href="sprite.svg#icon-plus"></use>
                     </svg>
-                    Create project
+                    Create category
                 </div>
+
             </div>
         </div>
     </nav>
 
-    <main class="container">
-        <h2 class="todo-item--project ">All</h2>
+    <main>
+        <h2 class="todo-item--category">All</h2>
+        <div class="task-container">
 
-        <div class="todo-item todo-item--completed">
-            <div class="todo-item__head">
-                <input type="checkbox" id="checkbox-1" class="checkbox__box" checked>
-                <label for="checkbox-1" class="checkbox__label">
-                    <span class="checkbox__btn"></span>
-                </label>
-                <p class="todo-item__title todo-item__title--completed heading-3">Grocery shopping</p>
+            <!-- <div class="todo-item todo-item--completed">
+                <div class="todo-item__head">
+                    <input type="checkbox" id="checkbox-1" class="checkbox__box" checked>
+                    <label for="checkbox-1" class="checkbox__label">
+                        <span class="checkbox__btn"></span>
+                    </label>
+                    <p class="todo-item__title todo-item__title--completed heading-3">Grocery shopping</p>
+                </div>
+                <div class="todo-item__details">
+                    <p class="todo-item__date heading-3">Nov-10-2022</p>
+                    <svg class="icon todo-item--delete icon--delete">
+                        <use href="sprite.svg#icon-bin"></use>
+                    </svg>
+                </div>
             </div>
-            <div class="todo-item__details">
-                <p class="todo-item__date heading-3">Nov-10-2022</p>
-                <svg class="icon todo-item--delete icon--delete">
-                    <use href="sprite.svg#icon-bin"></use>
+
+            <div class="todo-item">
+                <div class="todo-item__head">
+                    <input type="checkbox" id="checkbox-2" class="checkbox__box">
+                    <label for="checkbox-2" class="checkbox__label">
+                        <span class="checkbox__btn"></span>
+                    </label>
+                    <p class="todo-item__title heading-3">Coding new project</p>
+                </div>
+                <div class="todo-item__details">
+                    <p class="todo-item__date heading-3">Nov-10-2022</p>
+                    <svg class="icon todo-item--delete icon--delete">
+                        <use href="sprite.svg#icon-bin"></use>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="todo-item">
+                <div class="todo-item__head">
+                    <input type="checkbox" id="checkbox-3" class="checkbox__box">
+                    <label for="checkbox-3" class="checkbox__label">
+                        <span class="checkbox__btn"></span>
+                    </label>
+                    <p class="todo-item__title heading-3">Work out</p>
+                </div>
+                <div class="todo-item__details">
+                    <p class="todo-item__date heading-3">Nov-10-2022</p>
+                    <svg class="icon todo-item--delete icon--delete">
+                        <use href="sprite.svg#icon-bin"></use>
+                    </svg>
+                </div>
+            </div> -->
+
+
+            <div class="popup-container--task">
+                <!-- <div class="popup__task">
+                    <input type="text" class="popup__input popup__task--name">
+                    <input type="date" class="popup__input popup__task--date">
+                    <div class="popup__btns">
+                        <button class="btn btn--cancel">Cancel</button>
+                        <button class="btn btn--add">Add</button>
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="add-item add-item--task heading-3">
+                <svg class="icon">
+                    <use href="sprite.svg#icon-plus"></use>
                 </svg>
+                Add task
             </div>
+
         </div>
-
-        <div class="todo-item">
-            <div class="todo-item__head">
-                <input type="checkbox" id="checkbox-2" class="checkbox__box">
-                <label for="checkbox-2" class="checkbox__label">
-                    <span class="checkbox__btn"></span>
-                </label>
-                <p class="todo-item__title heading-3">Coding new project</p>
-            </div>
-            <div class="todo-item__details">
-                <p class="todo-item__date heading-3">Nov-10-2022</p>
-                <svg class="icon todo-item--delete icon--delete">
-                    <use href="sprite.svg#icon-bin"></use>
-                </svg>
-            </div>
-        </div>
-
-        <div class="todo-item">
-            <div class="todo-item__head">
-                <input type="checkbox" id="checkbox-3" class="checkbox__box">
-                <label for="checkbox-3" class="checkbox__label">
-                    <span class="checkbox__btn"></span>
-                </label>
-                <p class="todo-item__title heading-3">Work out</p>
-            </div>
-            <div class="todo-item__details">
-                <p class="todo-item__date heading-3">Nov-10-2022</p>
-                <svg class="icon todo-item--delete icon--delete">
-                    <use href="sprite.svg#icon-bin"></use>
-                </svg>
-            </div>
-        </div>
-
-
-        <div class="popup__task">
-            <input type="text" class="popup__input popup__task--name">
-            <input type="date" class="popup__input popup__task--date">
-            <div class="popup__btns">
-                <button class="btn btn--cancel">Cancel</button>
-                <button class="btn btn--add">Add</button>
-            </div>
-        </div>
-
-        <div class="add-item add-item--task heading-3">
-            <svg class="icon">
-                <use href="sprite.svg#icon-plus"></use>
-            </svg>
-            Add task
-        </div>
-
-
     </main>
 
 
