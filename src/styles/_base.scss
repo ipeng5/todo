@@ -10,7 +10,6 @@ $color-grey-dark-1: #adadad;
 $color-grey-dark-2: #414342;
 $color-p1: #f77b72;
 $color-p2: #ffb74d;
-$color-p3: #82c785;
 $color-p3: #4db6ac;
 $color-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.4);
 $item-width: 90%;
@@ -35,7 +34,7 @@ body {
   color: $color-grey-dark-2;
   position: relative;
   word-wrap: break-word;
-  overflow-y: scroll;
+  @include scrollbar;
 }
 
 main {

@@ -147,6 +147,7 @@
     &--text {
       @include scrollbar;
       max-height: 15rem;
+      line-height: 1.5;
       overflow-y: scroll;
     }
   }
