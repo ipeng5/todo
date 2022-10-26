@@ -20,11 +20,11 @@
   border: 2px solid $color-grey-light-2;
   border-radius: 3px;
   font-size: 1.8rem;
-  color: inherit;
+  color: $color-grey-dark-2;
   padding: 1rem;
   &:focus {
     outline: none;
-    border: 1px solid $color-primary;
+    border: 1px solid $color-primary-light;
   }
 }
 

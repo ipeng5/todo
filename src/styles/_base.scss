@@ -1,14 +1,17 @@
-$color-primary: #94b5fa;
-$color-primary-light: #dcecfd;
-$color-primary-dark: #5083f2;
+$color-primary-superlight: #e6f5f3;
+$color-primary-lighter: #cceae7;
+$color-primary-light: #99d5cf;
+$color-primary: #4db6ac;
+$color-primary-dark: #009688;
 $color-grey-light-1: #fafafa;
 $color-grey-light-2: #ebebeb;
-$color-grey-light-3: #aaa;
-$color-grey-dark-1: #999;
+$color-grey-light-3: #c2c2c2;
+$color-grey-dark-1: #adadad;
 $color-grey-dark-2: #414342;
-$color-p1: #f8605e;
-$color-p2: #f69400;
-$color-p3: #19a553;
+$color-p1: #f77b72;
+$color-p2: #ffb74d;
+$color-p3: #82c785;
+$color-p3: #4db6ac;
 $color-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.4);
 $item-width: 90%;
 $font-primary: 'Roboto', sans-serif;
@@ -32,6 +35,15 @@ body {
   color: $color-grey-dark-2;
   position: relative;
   word-wrap: break-word;
+  overflow-y: scroll;
+}
+
+main {
+  padding: 0 10vw;
+}
+
+textarea {
+  resize: none;
 }
 
 ::placeholder {

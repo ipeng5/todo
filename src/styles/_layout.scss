@@ -1,9 +1,10 @@
 .content {
   min-height: 100vh;
   max-width: 100vw;
+  margin: 0 auto;
   display: grid;
   grid-template-rows: 10rem 1fr;
-  grid-template-columns: 35rem 1fr;
+  grid-template-columns: 42rem 1fr;
   overflow: hidden;
 }
 
@@ -20,9 +21,7 @@
 
 .sidebar {
   background-color: $color-grey-light-1;
-  line-height: 2.5;
-  padding: 3rem;
-  height: calc(100vh - 10rem);
+  padding: 3.2rem 3rem 6rem 3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -38,20 +37,26 @@
     gap: 1.5rem;
     padding: 0 2.2rem;
     transition: all 0.2s;
+    height: 4.5rem;
 
     &--active {
-      background-color: $color-primary-light;
+      background-color: $color-primary-lighter;
     }
 
     &:hover {
       background-color: $color-grey-light-2;
     }
   }
+
+  &__category-title {
+    padding-top: 1.2rem;
+    padding-bottom: 1rem;
+  }
 }
 
 .task-container {
   overflow-y: auto;
-  max-height: 73vh;
+  max-height: 65vh;
   padding: 3rem 3rem 2rem 3rem;
   display: flex;
   flex-direction: column;
