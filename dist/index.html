@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@500&family=Lato:wght@300;400&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@500&family=Roboto:wght@300;400;500;700&display=swap"
         rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="pencil.svg">
     <script defer src="./main.js"></script>
@@ -15,7 +16,6 @@
 </head>
 
 <body class="content">
-
     <header class="header">
         <img src="" alt="" class="header header__logo">
         <h1 class="header header__text heading-1">
@@ -47,13 +47,14 @@
                     <svg class="icon ">
                         <use href="sprite.svg#icon-calendar"></use>
                     </svg>
-                    Next 7 days
+                    This week
                 </li>
             </ul>
 
             <div class="sidebar__category-group">
                 <h2 class="heading-2">Categories</h2>
-                <ul class="category-container">
+
+                <ul class="categories category-container">
                     <li class="categories__item sidebar__filter-option heading-4">
                         <svg class="icon ">
                             <use href="sprite.svg#icon-format_list_bulleted"></use>
@@ -73,11 +74,9 @@
                             <use href="sprite.svg#icon-bin"></use>
                         </svg>
                     </li>
-
-
                 </ul>
 
-                <div class="popup popup__category hidden">
+                <div class="popup popup__category no-display">
                     <input type="text" class="popup__input popup__input--category" maxlength="20"
                         placeholder="Category name">
                     <div class="popup__btns">
@@ -98,59 +97,67 @@
     </nav>
 
     <main>
-        <h2 class="task--category">All</h2>
+        <div class="task--category">All</div>
         <div class="task-container">
 
-            <!-- <div class="todo-item todo-item--completed">
-                <div class="todo-item__head">
-                    <input type="checkbox" id="checkbox-1" class="checkbox__box" checked>
-                    <label for="checkbox-1" class="checkbox__label">
+            <div class="task task--completed task--p1">
+                <div class="task__head">
+                    <input type="checkbox" id="task1" class="checkbox__box" checked>
+                    <label for="task1" class="checkbox__label">
                         <span class="checkbox__btn"></span>
                     </label>
-                    <p class="todo-item__title todo-item__title--completed heading-3">Grocery shopping</p>
+                    <p class="task__title  heading-3">Task number 1</p>
                 </div>
-                <div class="todo-item__details">
-                    <p class="todo-item__date heading-3">Nov-10-2022</p>
-                    <svg class="icon todo-item--delete icon--delete">
+                <div class="task__details">
+                    <p class="task__date heading-3">11-11-2022</p>
+                    <svg class="icon task--edit icon--edit">
+                        <use href="sprite.svg#icon-edit"></use>
+                    </svg>
+                    <svg class="icon task--delete icon--delete">
+                        <use href="sprite.svg#icon-bin"></use>
+                    </svg>
+                </div>
+            </div>
+            <div class="task  task--p2">
+                <div class="task__head">
+                    <input type="checkbox" id="task2" class="checkbox__box">
+                    <label for="task2" class="checkbox__label">
+                        <span class="checkbox__btn"></span>
+                    </label>
+                    <p class="task__title  heading-3">Task number 2</p>
+                </div>
+                <div class="task__details">
+                    <p class="task__date heading-3">12-11-2022</p>
+                    <svg class="icon task--edit icon--edit">
+                        <use href="sprite.svg#icon-edit"></use>
+                    </svg>
+                    <svg class="icon task--delete icon--delete">
                         <use href="sprite.svg#icon-bin"></use>
                     </svg>
                 </div>
             </div>
 
-            <div class="todo-item">
-                <div class="todo-item__head">
-                    <input type="checkbox" id="checkbox-2" class="checkbox__box">
-                    <label for="checkbox-2" class="checkbox__label">
+            <div class="task  task--p3">
+                <div class="task__head">
+                    <input type="checkbox" id="task3" class="checkbox__box">
+                    <label for="task3" class="checkbox__label">
                         <span class="checkbox__btn"></span>
                     </label>
-                    <p class="todo-item__title heading-3">Coding new project</p>
+                    <p class="task__title  heading-3">Task number 3</p>
                 </div>
-                <div class="todo-item__details">
-                    <p class="todo-item__date heading-3">Nov-10-2022</p>
-                    <svg class="icon todo-item--delete icon--delete">
+                <div class="task__details">
+                    <p class="task__date heading-3">12-11-2022</p>
+                    <svg class="icon task--edit icon--edit">
+                        <use href="sprite.svg#icon-edit"></use>
+                    </svg>
+                    <svg class="icon task--delete icon--delete">
                         <use href="sprite.svg#icon-bin"></use>
                     </svg>
                 </div>
             </div>
 
-            <div class="todo-item">
-                <div class="todo-item__head">
-                    <input type="checkbox" id="checkbox-3" class="checkbox__box">
-                    <label for="checkbox-3" class="checkbox__label">
-                        <span class="checkbox__btn"></span>
-                    </label>
-                    <p class="todo-item__title heading-3">Work out</p>
-                </div>
-                <div class="todo-item__details">
-                    <p class="todo-item__date heading-3">Nov-10-2022</p>
-                    <svg class="icon todo-item--delete icon--delete">
-                        <use href="sprite.svg#icon-bin"></use>
-                    </svg>
-                </div>
-            </div> -->
 
-
-            <div class="popup__task hidden">
+            <div class="popup__task no-display">
                 <input type="text" class="popup__input popup__task--name" placeholder="Task name">
                 <input type="date" class="popup__input popup__task--date">
                 <div class="popup__btns">
@@ -159,17 +166,124 @@
                 </div>
             </div>
 
-            <div class="add-item add-item--task heading-3">
-                <svg class="icon">
-                    <use href="sprite.svg#icon-plus"></use>
-                </svg>
-                Add task
-            </div>
 
+        </div>
+        <div class="add-item add-item--task heading-3">
+            <svg class="icon">
+                <use href="sprite.svg#icon-plus"></use>
+            </svg>
+            Add task
         </div>
     </main>
 
+    <div class="overlay--new hidden">
+        <div class="form__container form__container--new ">
+            <!-- <div class="form__container form__container--new  form__container--open"> 
+               隐藏： overlay hidden + container --open
+                显示： overlay 不hidden + container 不open-->
+            <div class="form__header">
+                <div class="form__header--heading">Category name</div>
+                <button class="form__header--btn-close">&times;</button>
+            </div>
+            <form action="#" class="form__content form__content--new">
+                <div class="form__title-group">
+                    <label for="new-title" class="form__title">Title:<span
+                            class="form__title--star">&#8727;</span></label>
+                    <input class="form__title--input" id="new-title" name="title" maxlength="40" required>
+                </div>
+                <div class="form__description-group">
+                    <label for="new-description" class="form__description">Description:</label>
+                    <textarea class="form__description--input" id="new-description" name="description"
+                        maxlength="120"></textarea>
+                </div>
 
+                <div class="form__date-group">
+                    <div class="form__text">Due date:</div>
+                    <input type="date" class="form__date--input" id="form-task-date" name="due-date">
+                </div>
+                <div class="form__priority-group">
+                    <div class="form__text">Priority:</div>
+                    <div class="form__priority-btn-group">
+                        <input type="radio" id="priority-low" name="new-priority" value="low">
+                        <label for="form-low"
+                            class="form__priority-btn form__priority-btn--low form__priority-low--active">Low</label>
+
+                        <input type="radio" id="priority-medium" name="new-priority" value="medium">
+                        <label for="form-medium" class="form__priority-btn form__priority-btn--medium">Medium</label>
+
+                        <input type="radio" id="priority-high" name="new-priority" value="high">
+                        <label for="form-high" class="form__priority-btn form__priority-btn--high">High</label>
+                    </div>
+                </div>
+                <button class="form__submit form__submit--new">Add</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="overlay--edit hidden">
+        <div class="form__container form__container--edit ">
+            <!-- <div class="form__container form__container--edit hidden form__container--open"> 
+                隐藏： overlay hidden + container --open
+                显示： overlay 不hidden + container 不open-->
+            <div class="form__header">
+                <div class="form__header--heading">Category name</div>
+                <button class="form__header--btn-close">&times;</button>
+            </div>
+            <form action="#" class="form__content form__content--edit">
+                <div class="form__title-group">
+                    <label for="new-title" class="form__title">Title:<span
+                            class="form__title--star">&#8727;</span></label>
+                    <input class="form__title--input" id="new-title" name="title" maxlength="40" required>
+                </div>
+                <div class="form__description-group">
+                    <label for="edit-description" class="form__description">Description:</label>
+                    <textarea class="form__description--input" id="edit-description" name="description"
+                        maxlength="120"></textarea>
+                </div>
+
+                <div class="form__date-group">
+                    <div class="form__text">Due date:</div>
+                    <input type="date" class="form__date--input" id="form-task-date" name="due-date">
+                </div>
+                <div class="form__priority-group">
+                    <div class="form__text">Priority:</div>
+                    <div class="form__priority-btn-group">
+                        <input type="radio" id="priority-low" name="new-priority" value="low">
+                        <label for="form-low"
+                            class="form__priority-btn form__priority-btn--low form__priority-low--active">Low</label>
+
+                        <input type="radio" id="priority-medium" name="new-priority" value="medium">
+                        <label for="form-medium" class="form__priority-btn form__priority-btn--medium">Medium</label>
+
+                        <input type="radio" id="priority-high" name="new-priority" value="high">
+                        <label for="form-high" class="form__priority-btn form__priority-btn--high">High</label>
+                    </div>
+                </div>
+                <button class="form__submit form__submit--edit">Edit</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="overlay--view hidden">
+        <div class="task-view ">
+            <!-- <div class="task-view hidden task-view--open"> 
+                隐藏： overlay hidden + container --open
+                显示： overlay 不hidden + container 不open-->
+            <div class="task-view--close">&times;</div>
+            <div class="task-view__content">
+                <div class="task-view__title">Go shopping</div>
+                <div class="task-view__category"><span class="task-view__name">Category:</span>Diet</div>
+                <div class="task-view__priority"><span class="task-view__name">Priority:</span>Digh</div>
+                <div class="task-view__date"><span class="task-view__name">Due Date:</span>DJanuary 23rd, 2021
+                </div>
+                <div class="task-view__description"><span class="task-view__name">Description: </span><span
+                        class="task-view__description--text">DI neeI neeI neeI neeI neeI neeI neeI neeI neeI neeI neeI
+                        neeI
+                        neeI neeI neeI neeI neeI neeI neeI neeI neeI neeI neeI nee1</span></div>
+            </div>
+        </div>
+    </div>
 </body>
+
 
 </html>

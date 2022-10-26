@@ -9,8 +9,8 @@ class AddCategoryView extends View {
       const data = document.querySelector('.popup__input--category').value;
       handler(data);
       document.querySelector('.popup__input--category').value = '';
-      document.querySelector('.add-item--category').classList.remove('hidden');
-      document.querySelector('.popup__category').classList.add('hidden');
+      document.querySelector('.add-item--category').classList.remove('no-display');
+      document.querySelector('.popup__category').classList.add('no-display');
     });
   }
 

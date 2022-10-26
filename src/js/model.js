@@ -1,10 +1,12 @@
 export const state = {
   category: { title: '', task: {} },
-  newCat: [],
+  newCategory: [],
 };
 
-let title = 'Category from JS';
-let taskName = 'Task from JS';
+export const todo = [];
+
+let title = 'Category from ??JS';
+let taskName = 'Task from ??JS';
 let dueDate = 'Nov 1';
 let completed = false;
 
@@ -17,6 +19,6 @@ state.category.task = {
 
 state.category;
 
-// export const addCategory = function (cat) {
-//   state.newCat.push(cat);
-// };
+export const addCategory = function (data) {
+  state.newCategory.push(data);
+};

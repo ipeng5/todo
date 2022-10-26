@@ -10,12 +10,16 @@ class AddTaskView extends View {
       const dueDate = document.querySelector('.popup__task--date').value;
       const data = { taskName: taskName, dueDate: dueDate, completed: false };
       handler(data);
+      document.querySelector('.popup__task--name').value = '';
+      document.querySelector('.add-item--task').classList.remove('no-display');
+      document.querySelector('.popup__task').classList.add('no-display');
     });
   }
 
   _generateMarkup() {
+    //TODO update task priority in class-name, task id number
     return `
-            <div class="task">
+            <div class="task task--p1">
                 <div class="task__head">
                     <input type="checkbox" id="${this._data.taskName}" class="checkbox__box">
                     <label for="${this._data.taskName}" class="checkbox__label">
@@ -25,6 +29,9 @@ class AddTaskView extends View {
                 </div>
                 <div class="task__details">
                     <p class="task__date heading-3">${this._data.dueDate}</p>
+                    <svg class="icon task--edit icon--edit">
+                        <use href="sprite.svg#icon-edit"></use>
+                    </svg>
                     <svg class="icon task--delete icon--delete">
                         <use href="sprite.svg#icon-bin"></use>
                     </svg>

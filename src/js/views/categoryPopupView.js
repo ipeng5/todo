@@ -10,15 +10,15 @@ class CategoryPopupView {
   }
 
   showPopup() {
-    this._popup.classList.remove('hidden');
-    this._btnOpen.classList.add('hidden');
+    this._popup.classList.remove('no-display');
+    this._btnOpen.classList.add('no-display');
     this._input.focus();
   }
 
   cancelPopup() {
     this._input.value = '';
-    this._popup.classList.add('hidden');
-    this._btnOpen.classList.remove('hidden');
+    this._popup.classList.add('no-display');
+    this._btnOpen.classList.remove('no-display');
   }
 
   _addHandlerShowPopup() {
