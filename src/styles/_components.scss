@@ -2,6 +2,7 @@
   height: 1.8rem;
   width: 1.8rem;
   fill: $color-grey-dark-2;
+  transition: all 0.2s;
 
   &--pencil {
     height: 5rem;
@@ -10,10 +11,17 @@
     margin-right: 2rem;
   }
 
+  &--edit {
+    margin-left: 2rem;
+
+    &:hover {
+      scale: 1.15;
+    }
+  }
+
   &--delete {
-    margin-left: auto;
     fill: $color-grey-dark-1;
-    cursor: pointer;
+    margin-left: auto;
 
     &:hover {
       scale: 1.15;
@@ -30,126 +38,20 @@
   padding: 0 2.2rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  transition: all 0.2s;
 
   &:hover {
-    background-color: $color-grey-light-2;
+    background-color: transparent;
+    color: $color-primary-dark;
+
+    svg {
+      fill: $color-primary-dark;
+    }
   }
 
   &--task {
-    width: $item-width;
-    height: 6rem;
-  }
-}
-
-.categories {
-  overflow-y: scroll;
-  height: 18rem;
-
-  &__item {
-    &--text {
-      line-height: 1.1;
-    }
-
-    &--delete {
-      opacity: 0;
-    }
-
-    &:hover &--delete {
-      opacity: 1;
-    }
-  }
-
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba($color-primary-dark, 0.4);
-
-    &:hover {
-      background: $color-primary-dark;
-    }
-  }
-}
-
-.popup {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin: 1.5rem;
-
-  &__input {
-    height: 4rem;
-    border-radius: 3px;
-    border: 1px solid $color-grey-light-3;
-    padding: 0 8px;
-    font-size: 1.8rem;
-    outline: none;
-
-  }
-
-  &__task {
-    height: 6rem;
-    padding: 0 5rem 0 3rem;
-    display: flex;
-    align-items: center;
-    background-color: $color-grey-light-1;
-    width: $item-width;
-
-    &--name {
-      flex: auto;
-      max-width: 60rem;
-    }
-
-    &--date {
-      margin: 0 auto 0 2rem;
-      flex: 0 0 auto;
-    }
-
-    .btn--cancel {
-      margin-left: 2rem;
-    }
-  }
-}
-
-.popup__btns {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-
-  .btn {
-    width: 12rem;
-    padding: 0.8rem 0;
-    cursor: pointer;
-    border-radius: 20px;
-    font-size: 1.8rem;
-
-    &--cancel {
-      background-color: white;
-      color: $color-grey-dark-1;
-      border: 2px solid $color-grey-light-3;
-
-      &:hover {
-        color: $color-primary-dark;
-        border: 2px solid $color-primary-dark;
-        background-color: $color-grey-light-1;
-        background-color: rgba($color-primary-light, 0.2);
-      }
-    }
-
-    &--add {
-      background-color: rgba($color-primary-dark, 0.8);
-      color: white;
-      border: 2px solid $color-primary-light;
-
-      &:hover {
-        background-color: $color-primary-dark;
-      }
-    }
+    width: 20rem;
+    margin: 0 7%;
   }
 }
 
@@ -167,22 +69,23 @@
   &__btn {
     height: 2rem;
     width: 2rem;
-    border-radius: 5px;
-    border: 3px solid $color-primary;
+    border-radius: 50%;
+    border: 3.5px solid $color-primary;
     display: inline-block;
     position: absolute;
     left: -2rem;
     top: 0.3rem;
 
     &::after {
-      content: '';
-      display: block;
-      height: 1rem;
-      width: 1rem;
-      position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      content: '';
+      display: block;
+      height: 9px;
+      width: 9px;
+      position: absolute;
+      border-radius: 50%;
       opacity: 0;
       transition: opacity 0.2s;
     }
@@ -194,53 +97,11 @@
   }
 }
 
-.task {
-  height: 6rem;
-  width: $item-width;
-  padding: 0 5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.2s;
-  background-color: $color-grey-light-1;
-  border-radius: 5px;
-  cursor: pointer;
-
-  &--completed {
-    text-decoration: line-through;
-    & > * {
-      color: $color-grey-light-3;
-    }
-  }
-
-  &__title {
-    padding-left: 2rem;
-  }
-
-  &__details {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  &__date {
-    cursor: pointer;
-  }
-
-  &--category {
-    width: $item-width;
-    margin: 0 auto;
-    height: 5rem;
-    padding: 2rem 0 0 5rem;
-    font-size: 3.5rem;
-    color: $color-primary;
-  }
-
-  &:hover {
-    background-color: $color-primary-light;
-  }
+.no-display {
+  display: none;
 }
 
 .hidden {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
 }

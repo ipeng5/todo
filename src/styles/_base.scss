@@ -6,9 +6,12 @@ $color-grey-light-2: #ebebeb;
 $color-grey-light-3: #aaa;
 $color-grey-dark-1: #999;
 $color-grey-dark-2: #414342;
-
+$color-p1: #f8605e;
+$color-p2: #f69400;
+$color-p3: #19a553;
+$color-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.4);
 $item-width: 90%;
-$font-primary: 'Lato', sans-serif;
+$font-primary: 'Roboto', sans-serif;
 
 *,
 *::before,
@@ -27,6 +30,8 @@ body {
   font-family: $font-primary;
   font-weight: 400;
   color: $color-grey-dark-2;
+  position: relative;
+  word-wrap: break-word;
 }
 
 ::placeholder {
