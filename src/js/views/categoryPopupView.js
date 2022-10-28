@@ -10,15 +10,15 @@ class CategoryPopupView {
   }
 
   showPopup() {
-    this._popup.classList.remove('no-display');
-    this._btnOpen.classList.add('no-display');
+    this._popup.classList.toggle('no-display');
+    this._btnOpen.classList.toggle('no-display');
     this._input.focus();
   }
 
   cancelPopup() {
     this._input.value = '';
-    this._popup.classList.add('no-display');
-    this._btnOpen.classList.remove('no-display');
+    this._popup.classList.toggle('no-display');
+    this._btnOpen.classList.toggle('no-display');
   }
 
   _addHandlerShowPopup() {

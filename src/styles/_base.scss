@@ -6,13 +6,13 @@ $color-primary-dark: #009688;
 $color-grey-light-1: #fafafa;
 $color-grey-light-2: #ebebeb;
 $color-grey-light-3: #c2c2c2;
+$color-grey-light-3: #e2e2e2;
 $color-grey-dark-1: #adadad;
 $color-grey-dark-2: #414342;
 $color-p1: #f77b72;
 $color-p2: #ffb74d;
 $color-p3: #4db6ac;
 $color-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.4);
-$item-width: 90%;
 $font-primary: 'Roboto', sans-serif;
 
 *,
@@ -34,17 +34,9 @@ body {
   color: $color-grey-dark-2;
   position: relative;
   word-wrap: break-word;
-  @include scrollbar;
 }
 
 main {
-  padding: 0 10vw;
-}
-
-textarea {
-  resize: none;
-}
-
-::placeholder {
-  color: $color-grey-light-3;
+  width: 90rem;
+  margin: 0 auto;
 }

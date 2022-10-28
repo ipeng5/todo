@@ -33,25 +33,29 @@
   line-height: 4.5rem;
   display: flex;
   align-items: center;
-  margin-top: 0.5rem;
   gap: 1.5rem;
-  padding: 0 2.2rem;
-  border-radius: 0.5rem;
   cursor: pointer;
-  transition: all 0.2s;
+
+  .icon {
+    color: $color-primary;
+    border-radius: 50%;
+    height: 2.5rem;
+    width: 2.5rem;
+    transform: translateY(-1px);
+  }
 
   &:hover {
     background-color: transparent;
     color: $color-primary;
 
-    svg {
-      fill: $color-primary;
+    .icon {
+      background-color: $color-primary;
+      fill: white;
     }
   }
 
-  &--task {
-    width: 20rem;
-    margin: 0 7%;
+  &--category {
+    margin-left: 2.2rem;
   }
 }
 
@@ -66,32 +70,33 @@
     position: relative;
   }
 
+  &__icon--check {
+    transform: translateX(-16px);
+    height: 1.2rem;
+    width: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &__box:checked ~ &__label &__icon--check {
+    opacity: 1;
+    fill: white;
+  }
+
   &__btn {
     height: 2rem;
     width: 2rem;
     border-radius: 50%;
-    border: 3px solid $color-grey-light-3;
+    border: 3px solid $color-grey-dark-1;
     position: absolute;
     left: -2rem;
     top: 0.3rem;
-
-    &::after {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      content: '';
-      display: block;
-      height: 10px;
-      width: 10px;
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
   }
 
-  &__box:checked ~ &__label &__btn::after {
-    opacity: 1;
+  &__box:checked ~ &__label &__btn {
     background-color: $color-grey-dark-1;
   }
 }
@@ -103,4 +108,12 @@
 .hidden {
   opacity: 0;
   visibility: hidden;
+}
+
+textarea {
+  resize: none;
+}
+
+::placeholder {
+  color: $color-grey-light-3;
 }

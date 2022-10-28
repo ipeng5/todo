@@ -37,6 +37,7 @@ class AddTaskView extends View {
                     </svg>
                 </div>
             </div>
+            
             `;
   }
 }

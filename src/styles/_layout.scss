@@ -57,7 +57,9 @@
 .task-container {
   overflow-y: auto;
   max-height: 65vh;
-  padding: 3rem 3rem 2rem 3rem;
+  padding: 3rem 0rem 2rem 0rem;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;

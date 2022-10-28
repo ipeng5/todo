@@ -80,6 +80,7 @@
 
   &__description--input {
     @include inputBox;
+    @include scrollbar;
     font-family: inherit;
     height: 8rem;
   }

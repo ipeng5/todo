@@ -17,7 +17,7 @@
 
 .task {
   height: 6rem;
-  width: $item-width;
+  width: 100%;
   padding: 0 5rem;
   display: flex;
   flex-shrink: 0;
@@ -44,12 +44,13 @@
   &--completed {
     text-decoration: line-through;
     & > * {
-      color: $color-grey-light-3;
+      color: $color-grey-dark-1;
     }
   }
 
-  &__title {
-    padding-left: 2rem;
+  &__head {
+    display: flex;
+    align-items: center;
   }
 
   &__details {
@@ -59,10 +60,9 @@
   }
 
   &--category {
-    width: $item-width;
+    width: 100%;
     margin: 0 auto;
-    // height: 5rem;
-    padding: 3.2rem 0 0 5rem;
+    padding-top: 3.2rem;
     font-size: 5rem;
     color: $color-primary;
   }
