@@ -29,15 +29,15 @@
   cursor: pointer;
   transition: all 0.2s;
 
-  &--p1 {
+  &--high{
     border-left: 6px solid rgba($color-p1, 0.6);
   }
 
-  &--p2 {
+  &--medium {
     border-left: 6px solid rgba($color-p2, 0.6);
   }
 
-  &--p3 {
+  &--low {
     border-left: 6px solid rgba($color-p3, 0.6);
   }
 

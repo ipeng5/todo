@@ -39,12 +39,13 @@
     transition: all 0.2s;
     height: 4.5rem;
 
-    &--active {
-      background-color: $color-primary-lighter;
-    }
-
     &:hover {
       background-color: $color-grey-light-2;
+    }
+
+    &--active,
+    &--active:hover {
+      background-color: $color-primary-lighter;
     }
   }
 
@@ -78,11 +79,8 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(4px);
-  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s;
-  // visibility: visible;
-  // opacity: 1;
 }

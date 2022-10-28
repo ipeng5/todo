@@ -19,26 +19,20 @@ class CategoryView {
 
   addHandlerDelete(handler) {
     this._categoryContainer.addEventListener('click', function (e) {
-      if (e.target.classList.contains('function-delete' || 'categories__item--delete'))
-        e.target.closest('.categories__item').classList.add('no-display');
+      if (!e.target.classList.contains('function-delete' || 'categories__item--delete')) return;
+      e.target.closest('.categories__item').classList.add('no-display');
       handler(e.target.closest('.categories__item').dataset.id);
     });
   }
 
   addHandlerSelect(handler) {
-    this._categoryContainer.addEventListener('click', function (e) {
-      // if (!e.target.classList.contains('function-delete' || 'categories__item--delete'))
-      const sidebarFilters = [
-        ...e.target.parentElement.children,
-        ...document.querySelector('.sidebar__filter').children,
-      ];
-      sidebarFilters.forEach(filter => filter.classList.remove('sidebar__filter-option--active'));
-
+    this._categoryContainer.addEventListener('mousedown', function (e) {
+      const sidebarFilters = document.querySelectorAll('.sidebar__filter-option');
+      if (!e.target.classList.contains('function-delete' || 'categories__item--delete'))
+        sidebarFilters.forEach(filter => filter.classList.remove('sidebar__filter-option--active'));
       e.target.closest('.categories__item').classList.add('sidebar__filter-option--active');
-      //TODOTODOTODOTODOTODO
-      // handler(e.target);
-      // to create a function that take info of the selected category name and set it as current category
-      // so that we can show tasks inside it
+      const currentId = e.target.dataset.id;
+      handler(currentId);
     });
   }
 

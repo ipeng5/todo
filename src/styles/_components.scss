@@ -70,12 +70,22 @@
     position: relative;
   }
 
+  &__btn {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    border: 3px solid $color-grey-dark-1;
+    position: absolute;
+    left: -2.4rem;
+  }
+
   &__icon--check {
-    transform: translateX(-16px);
-    height: 1.2rem;
-    width: 1.2rem;
+    transform: translate(-19px, 1px);
+    height: 1.5rem;
+    width: 1.5rem;
     opacity: 0;
     transition: opacity 0.2s;
+    fill: $color-grey-dark-1;
 
     &:hover {
       opacity: 1;
@@ -84,16 +94,6 @@
   &__box:checked ~ &__label &__icon--check {
     opacity: 1;
     fill: white;
-  }
-
-  &__btn {
-    height: 2rem;
-    width: 2rem;
-    border-radius: 50%;
-    border: 3px solid $color-grey-dark-1;
-    position: absolute;
-    left: -2rem;
-    top: 0.3rem;
   }
 
   &__box:checked ~ &__label &__btn {

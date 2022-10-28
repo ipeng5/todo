@@ -45,19 +45,35 @@
 // categories.push(category1);
 
 export const categories = [];
+export let currentCategory;
 
 export const addCategory = function (id, categoryName) {
-  const obj = {
+  const newCategory = {
     id: '',
     categoryName: '',
-    task: {},
+    tasks: [],
   };
-  obj.id = id;
-  obj.categoryName = categoryName;
-  categories.push(obj);
+  newCategory.id = id;
+  newCategory.categoryName = categoryName;
+  categories.push(newCategory);
+};
+
+export const addTask = function (id, data, priority) {
+  const newTask = {};
+  newTask.id = id;
+  newTask.title = data.title;
+  newTask.description = data.description;
+  newTask.dueDate = data.dueDate;
+  newTask.priority = priority;
+  newTask.completed = false;
+  categories.find(project => categories.project === project).tasks.push(newTask);
 };
 
 export const deleteCategory = function (id) {
   const index = categories.findIndex(el => el.id === id);
   categories.splice(index, 1);
+};
+
+export const selectCategory = function (id) {
+  currentCategory = categories.find(cat => cat.id === id);
 };
