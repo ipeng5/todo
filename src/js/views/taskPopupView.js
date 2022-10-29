@@ -3,6 +3,7 @@ class TaskPopupView {
   _overlay = document.querySelector('.overlay--new');
   _btnOpen = document.querySelector('.add-item--task');
   _btnCancel = document.querySelector('.form__header--btn-close');
+  _btnSubmit = document.querySelector('.form__submit--new');
 
   constructor() {
     this._addHandlerShowPopup();

@@ -32,6 +32,8 @@ class CategoryView {
         sidebarFilters.forEach(filter => filter.classList.remove('sidebar__filter-option--active'));
       e.target.closest('.categories__item').classList.add('sidebar__filter-option--active');
       const currentId = e.target.dataset.id;
+      document.querySelector('.add-item--task').classList.remove('no-display');
+      document.querySelector('.task-container').innerHTML = '';
       handler(currentId);
     });
   }

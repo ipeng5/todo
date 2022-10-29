@@ -58,15 +58,25 @@ export const addCategory = function (id, categoryName) {
   categories.push(newCategory);
 };
 
-export const addTask = function (id, data, priority) {
+// const structureData = function(id, data){
+//   const{newData} = data;
+//   return{
+//     id: id,
+//     title: newData.title,
+//     description: newData.description,
+//     dueData: newData.
+//   }
+// }
+
+export const addTask = function (id, data) {
   const newTask = {};
   newTask.id = id;
   newTask.title = data.title;
   newTask.description = data.description;
   newTask.dueDate = data.dueDate;
-  newTask.priority = priority;
+  newTask.priority = data.priority;
   newTask.completed = false;
-  categories.find(project => categories.project === project).tasks.push(newTask);
+  currentCategory.tasks.push(newTask);
 };
 
 export const deleteCategory = function (id) {

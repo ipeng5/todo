@@ -56,7 +56,7 @@
                     <div class="sidebar__category-title heading-2">Categories</div>
 
                     <ul class="categories category-container">
-                        <li class="categories__item sidebar__filter-option heading-4" data-id="abcd123random">
+                        <!-- <li class="categories__item sidebar__filter-option heading-4" data-id="abcd123random">
                             <svg class="icon ">
                                 <use href="sprite.svg#icon-format_list_bulleted"></use>
                             </svg>
@@ -74,7 +74,7 @@
                             <svg class="icon categories__item--delete icon--delete">
                                 <use href="sprite.svg#icon-bin" class="function-delete"></use>
                             </svg>
-                        </li>
+                        </li> -->
 
                     </ul>
 
@@ -99,7 +99,7 @@
         </nav>
 
         <main>
-            <div class="task--category">All</div>
+            <div class="task--category-container"><span class="task--category">All</span></div>
             <div class="task-container">
 
                 <div class="task task--high task--completed">
@@ -170,7 +170,7 @@
                 </div>
 
             </div>
-            <div class="add-item add-item--task heading-3">
+            <div class="add-item add-item--task heading-3 no-display">
                 <svg class="icon">
                     <use href="sprite.svg#icon-plus"></use>
                 </svg>
@@ -206,15 +206,15 @@
                     <div class="form__priority-group form__priority-group--new">
                         <div class="form__text">Priority:</div>
                         <div class="form__priority-btn-group form__priority-btn-group--new">
-                            <input type="radio" id="new-form-low" name="new-priority" value="low">
+                            <input type="radio" id="new-form-low" name="priority" value="low">
                             <label for="new-form-low"
                                 class="form__priority-btn form__priority-new form__priority-btn--low ">Low</label>
 
-                            <input type="radio" id="new-form-medium" name="new-priority" value="medium">
+                            <input type="radio" id="new-form-medium" name="priority" value="medium">
                             <label for="new-form-medium"
                                 class="form__priority-btn form__priority-new form__priority-btn--medium">Medium</label>
 
-                            <input type="radio" id="new-form-high" name="new-priority" value="high">
+                            <input type="radio" id="new-form-high" name="priority" value="high">
                             <label for="new-form-high"
                                 class="form__priority-btn form__priority-new form__priority-btn--high">High</label>
                         </div>
@@ -251,15 +251,15 @@
                     <div class="form__priority-group form__priority-group--edit">
                         <div class="form__text">Priority:</div>
                         <div class="form__priority-btn-group">
-                            <input type="radio" id="edit-form-low" name="edit-priority" value="low">
+                            <input type="radio" id="edit-form-low" name="priority" value="low">
                             <label for="edit-form-low"
                                 class="form__priority-btn form__priority-edit form__priority-btn--low form__priority-low--active">Low</label>
 
-                            <input type="radio" id="edit-form-medium" name="edit-priority" value="medium">
+                            <input type="radio" id="edit-form-medium" name="priority" value="medium">
                             <label for="edit-form-medium"
                                 class="form__priority-btn form__priority-edit form__priority-btn--medium">Medium</label>
 
-                            <input type="radio" id="edit-form-high" name="edit-priority" value="high">
+                            <input type="radio" id="edit-form-high" name="priority" value="high">
                             <label for="edit-form-high"
                                 class="form__priority-btn form__priority-edit form__priority-btn--high">High</label>
                         </div>

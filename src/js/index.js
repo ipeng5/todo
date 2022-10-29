@@ -4,11 +4,12 @@ import categoryPopupView from './views/categoryPopupView.js';
 import taskPopupView from './views/taskPopupView.js';
 import categoryView from './views/categoryView.js';
 import taskView from './views/taskView.js';
+import taskTitleView from './views/taskTitleView.js';
 import updatePriority from './views/priorityBtnView.js';
 
-const controlAddTask = function (id, data, priority) {
-  // taskView.render(model.categories);
-  console.log(id, data, priority);
+const controlAddTask = function (id, data) {
+  model.addTask(id, data);
+  taskView.render(model.currentCategory.tasks[model.currentCategory.tasks.length - 1]);
 };
 
 const controlAddCategory = function (id, newCategoryName) {
@@ -22,7 +23,8 @@ const controlDeleteCategory = function (id) {
 
 const controlSelectCategory = function (id) {
   model.selectCategory(id);
-  // taskView.render(model.currentCategory.tasks);
+  taskTitleView.render(model.currentCategory.categoryName);
+  taskView.renderAll(model.currentCategory.tasks);
 };
 
 const init = function () {
