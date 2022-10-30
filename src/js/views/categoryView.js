@@ -19,17 +19,18 @@ class CategoryView {
 
   addHandlerDeleteCategory(handler) {
     this._categoryContainer.addEventListener('click', function (e) {
-      if (!e.target.classList.contains('function-delete' || 'categories__item--delete')) return;
-      e.target.closest('.categories__item').classList.add('no-display');
-      handler(e.target.closest('.categories__item').dataset.id);
+      if (e.target.classList.contains('function-delete' || 'categories__item--delete')) {
+        e.target.closest('.categories__item').classList.add('no-display');
+        handler(e.target.closest('.categories__item').dataset.id, 'filter--all');
+        document.querySelector('#filter--all').classList.add('sidebar__filter-option--active');
+      }
     });
   }
 
-  addHandlerSelectCategory(handler) {
-    this._categoryContainer.addEventListener('mousedown', function (e) {
+  addHandlerSelectFilter(handler) {
+    this._categoryContainer.addEventListener('mousedown', e => {
       const sidebarFilters = document.querySelectorAll('.sidebar__filter-option');
-      if (!e.target.classList.contains('function-delete' || 'categories__item--delete'))
-        sidebarFilters.forEach(filter => filter.classList.remove('sidebar__filter-option--active'));
+      sidebarFilters.forEach(filter => filter.classList.remove('sidebar__filter-option--active'));
       e.target.closest('.categories__item').classList.add('sidebar__filter-option--active');
       const currentId = e.target.closest('.categories__item').dataset.id;
       handler(currentId);
@@ -38,6 +39,28 @@ class CategoryView {
       document.querySelector('.popup__category').classList.add('no-display');
       document.querySelector('.add-item--category').classList.remove('no-display');
     });
+  }
+
+  addHandlerSidebarFilter(handler) {
+    const topFilters = document.querySelectorAll('.sidebar__top-filter');
+    topFilters.forEach(filter =>
+      filter.addEventListener('mousedown', e => {
+        const sidebarFilters = document.querySelectorAll('.sidebar__filter-option');
+        sidebarFilters.forEach(filter => filter.classList.remove('sidebar__filter-option--active'));
+        e.target.classList.add('sidebar__filter-option--active');
+        handler(e.target.id);
+        if (
+          e.target.id === 'filter--all' ||
+          e.target.id === 'filter--today' ||
+          e.target.id === 'filter--7days'
+        ) {
+          document.querySelector('.add-item--task').classList.add('no-display');
+          document.querySelector('.popup__input--category').value = '';
+          document.querySelector('.popup__category').classList.add('no-display');
+          document.querySelector('.add-item--category').classList.remove('no-display');
+        }
+      })
+    );
   }
 
   render(data) {

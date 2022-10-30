@@ -1,3 +1,5 @@
+import { format, parseISO } from 'date-fns';
+
 import '../styles/main.scss';
 import * as model from './model.js';
 import categoryPopupView from './views/categoryPopupView.js';
@@ -40,8 +42,11 @@ const controlAddCategory = function (id, newCategoryName) {
   categoryView.render(model.categories[model.categories.length - 1]);
 };
 
-const controlDeleteCategory = function (id) {
+const controlDeleteCategory = function (id, idAll) {
   model.deleteCategory(id);
+  model.selectTopFilter(idAll);
+  taskTitleView.render(model.filteredCategory.categoryName);
+  model.taskView.renderAll(model.filteredCategory.tasks);
 };
 
 const controlSelectCategory = function (id) {
@@ -50,15 +55,23 @@ const controlSelectCategory = function (id) {
   taskView.renderAll(model.currentCategory.tasks);
 };
 
+const controlSelectSidebar = function (id) {
+  model.selectTopFilter(id);
+  taskTitleView.render(model.filteredCategory.categoryName);
+  taskView.renderAll(model.filteredCategory.tasks);
+};
+
 const init = function () {
   categoryView.addHandlerCreateCategory(controlAddCategory);
   categoryView.addHandlerDeleteCategory(controlDeleteCategory);
-  categoryView.addHandlerSelectCategory(controlSelectCategory);
+  categoryView.addHandlerSelectFilter(controlSelectCategory);
   taskView.addHandlerCreateTask(controlAddTask);
   taskView.addHandlerEditTask(controlEditTask);
   taskView.addHandlerDeleteTask(controlDeleteTask);
   taskView.addHandlerEditModal(controlEditModal);
   taskView.addHandlerViewModal(controlViewTask);
   taskView.addHandlerCompleteTask(controlCompleteTask);
+
+  categoryView.addHandlerSidebarFilter(controlSelectSidebar);
 };
 init();

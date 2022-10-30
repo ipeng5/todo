@@ -28,6 +28,7 @@
   },
   "keywords": [],
   "dependencies": {
+    "date-fns": "^2.29.3",
     "nanoid": "^4.0.0"
   }
 }

@@ -1,6 +1,12 @@
+import { format, parseISO, differenceInDays } from 'date-fns';
+
 export const categories = [];
 export let currentCategory;
 export let currentTask;
+export let filteredCategory = {
+  categoryName: '',
+  tasks: [],
+};
 
 export const addCategory = function (id, categoryName) {
   const newCategory = {
@@ -31,6 +37,33 @@ export const deleteCategory = function (id) {
 
 export const selectCategory = function (id) {
   currentCategory = categories.find(cat => cat.id === id);
+};
+
+export const selectTopFilter = function (id) {
+  const now = new Date();
+  const categoryArr = [...Object.values(categories)];
+  filteredCategory.tasks = [];
+
+  if (id === 'filter--all') {
+    console.log(filteredCategory.tasks);
+    filteredCategory.categoryName = 'All';
+    filteredCategory.tasks = categoryArr.flatMap(cat => cat.tasks);
+  }
+  if (id === 'filter--today') {
+    filteredCategory.categoryName = 'Today';
+    filteredCategory.tasks = categoryArr
+      .flatMap(cat => cat.tasks)
+      .filter(task => task.dueDate === format(now, 'yyyy-MM-dd'));
+  }
+  if (id === 'filter--7days') {
+    const todayDate = format(new Date(), 'yyyy-MM-dd');
+    filteredCategory.categoryName = 'Next 7 days';
+    filteredCategory.tasks = categoryArr
+      .flatMap(cat => cat.tasks)
+      .filter(task => {
+        differenceInDays(parseISO(new Date(task.dueDate)), parseISO(new Date())) <= 7;
+      });
+  }
 };
 
 export const deleteTask = function (id) {

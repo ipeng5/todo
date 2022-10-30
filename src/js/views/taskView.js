@@ -45,7 +45,6 @@ class TaskView {
 
   renderTaskUpdate(task) {
     const taskCard = document.querySelector(`[data-id="${task.id}"]`).closest('.task-card');
-    console.log(taskCard.innerHTML);
     taskCard.innerHTML = `
       <div  class="task task--${task.priority ? task.priority : ''}">
                 <div class="task__head">
@@ -74,24 +73,23 @@ class TaskView {
   // Remove task card
   addHandlerDeleteTask(handler) {
     this._taskContainer.addEventListener('click', e => {
-      if (e.target.classList.contains('function-delete' || 'task--delete')) {
-        const dataset = e.target.closest('.task__details').dataset;
-        e.target.closest('.task').classList.add('no-display');
-        handler(dataset.id);
-      }
+      if (!e.target.classList.contains('function-delete' || 'task--delete')) return;
+      e.target.closest('.task').classList.add('no-display');
+      const dataset = e.target.closest('.task__details').dataset;
+      handler(dataset.id);
     });
   }
 
   // Click on edit button to open edit modal
   addHandlerEditModal(handler) {
-    this._taskContainer.addEventListener('click', e => {
+    const overlay = document.querySelector('.overlay--edit');
+    const formContainer = document.querySelector('.form__container--edit');
+    this._taskContainer.addEventListener('mouseup', e => {
       if (e.target.classList.contains('function-edit' || 'task--edit')) {
         const dataset = e.target.closest('.task__details').dataset;
-        const formContainer = document.querySelector('.form__container--edit');
-        const overlay = document.querySelector('.overlay--edit');
-        handler(dataset.id);
         overlay.classList.toggle('hidden');
         formContainer.classList.toggle('form__container--open');
+        handler(dataset.id);
       }
     });
   }
@@ -194,7 +192,6 @@ class TaskView {
     document.querySelector('.task-view__priority--text').textContent = task.priority;
     document.querySelector('.task-view__date--text').textContent = task.dueDate;
     document.querySelector('.task-view__description--text').textContent = task.description;
-    console.log(document.querySelector('.task-view__description--text').textContent);
   }
 
   // Render task container when choosing a category
@@ -202,8 +199,6 @@ class TaskView {
     const parentElement = document.querySelector('.task-container');
     parentElement.innerHTML = '';
     tasks.forEach(task => {
-      console.log(task);
-      console.log(parentElement);
       if (!task) return;
       parentElement.insertAdjacentHTML(
         'afterbegin',
