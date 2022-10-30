@@ -101,31 +101,32 @@
         <main>
             <div class="task--category-container"><span class="task--category">All</span></div>
             <div class="task-container">
-
-                <div class="task task--high task--completed">
-                    <div class="task__head">
-                        <input type="checkbox" id="task1" class="checkbox__box" checked>
-                        <label for="task1" class="checkbox__label">
-                            <span class="checkbox__btn"> </span>
-                            <svg class=" checkbox__icon--check">
-                                <use href="sprite.svg#icon-check"></use>
+                <div class="task-card">
+                    <div class="task task--high task--completed">
+                        <div class="task__head">
+                            <input type="checkbox" id="task1" class="checkbox__box" checked>
+                            <label for="task1" class="checkbox__label">
+                                <span class="checkbox__btn"> </span>
+                                <svg class=" checkbox__icon--check">
+                                    <use href="sprite.svg#icon-check"></use>
+                                </svg>
+                            </label>
+                            <p class="task__title  heading-3">Task number 1</p>
+                        </div>
+                        <div class="task__details">
+                            <p class="task__date heading-3">12-11-2022</p>
+                            <svg class="icon task--edit icon--edit">
+                                <use href="sprite.svg#icon-edit" class="function-edit"></use>
                             </svg>
-                        </label>
-                        <p class="task__title  heading-3">Task number 1</p>
-                    </div>
-                    <div class="task__details">
-                        <p class="task__date heading-3">12-11-2022</p>
-                        <svg class="icon task--edit icon--edit">
-                            <use href="sprite.svg#icon-edit" class="function-edit"></use>
-                        </svg>
-                        <svg class="icon task--delete icon--delete">
-                            <use href="sprite.svg#icon-bin" class="function-delete"></use>
-                        </svg>
+                            <svg class="icon task--delete icon--delete">
+                                <use href="sprite.svg#icon-bin" class="function-delete"></use>
+                            </svg>
+                        </div>
                     </div>
                 </div>
 
 
-                <div class="task  task--medium">
+                <!--  <div class="task  task--medium">
                     <div class="task__head">
                         <input type="checkbox" id="task2" class="checkbox__box">
                         <label for="task2" class="checkbox__label">
@@ -167,7 +168,7 @@
                             <use href="sprite.svg#icon-bin" class="function-delete"></use>
                         </svg>
                     </div>
-                </div>
+                </div> -->
 
             </div>
             <div class="add-item add-item--task heading-3 no-display">
@@ -184,7 +185,7 @@
                 <!-- <div class="form__container form__container--new  form__container--open"> -->
                 <div class="form__header">
                     <div class="form__header--heading">Add task</div>
-                    <button class="form__header--btn-close">&times;</button>
+                    <button class="form__header--btn-close new-form__header--btn-close">&times;</button>
                 </div>
                 <form action="#" class="form__content form__content--new">
                     <div class="form__title-group">
@@ -203,22 +204,22 @@
                         <div class="form__text">Due date:</div>
                         <input type="date" class="form__date--input" id="new-form__task-date" name="dueDate">
                     </div>
+
                     <div class="form__priority-group form__priority-group--new">
                         <div class="form__text">Priority:</div>
                         <div class="form__priority-btn-group form__priority-btn-group--new">
                             <input type="radio" id="new-form-low" name="priority" value="low">
-                            <label for="new-form-low"
-                                class="form__priority-btn form__priority-new form__priority-btn--low ">Low</label>
+                            <label for="new-form-low" class="form__priority-btn form__priority-btn--low ">Low</label>
 
                             <input type="radio" id="new-form-medium" name="priority" value="medium">
                             <label for="new-form-medium"
-                                class="form__priority-btn form__priority-new form__priority-btn--medium">Medium</label>
+                                class="form__priority-btn form__priority-btn--medium">Medium</label>
 
                             <input type="radio" id="new-form-high" name="priority" value="high">
-                            <label for="new-form-high"
-                                class="form__priority-btn form__priority-new form__priority-btn--high">High</label>
+                            <label for="new-form-high" class="form__priority-btn form__priority-btn--high">High</label>
                         </div>
                     </div>
+
                     <button class="form__submit form__submit--new">Confirm</button>
                 </form>
             </div>
@@ -230,40 +231,43 @@
                 <!-- <div class="form__container form__container--edit form__container--open"> -->
                 <div class="form__header">
                     <div class="form__header--heading">Edit task</div>
-                    <button class="form__header--btn-close">&times;</button>
+                    <button class="form__header--btn-close edit-form__header--btn-close">&times;</button>
                 </div>
                 <form action="#" class="form__content form__content--edit">
                     <div class="form__title-group">
                         <label for="new-title" class="form__title">Title:<span
                                 class="form__title--star">&#8727;</span></label>
-                        <input class="form__title--input" id="edit-title" name="title" maxlength="40" required>
+                        <input class="form__title--input edit-form__title--input" id="edit-title" name="title"
+                            maxlength="40" required>
                     </div>
                     <div class="form__description-group">
                         <label for="edit-description" class="form__description">Description:</label>
-                        <textarea class="form__description--input" id="edit-description" name="description"
-                            maxlength="120"></textarea>
+                        <textarea class="form__description--input edit-form__description--input" id="edit-description"
+                            name="description" maxlength="120"></textarea>
                     </div>
 
                     <div class="form__date-group">
                         <div class="form__text">Due date:</div>
-                        <input type="date" class="form__date--input" id="edit-form__task-date" name="dueDate">
+                        <input type="date" class="form__date--input edit-form__date--input" id="edit-form__task-date"
+                            name="dueDate">
                     </div>
+
                     <div class="form__priority-group form__priority-group--edit">
                         <div class="form__text">Priority:</div>
-                        <div class="form__priority-btn-group">
+                        <div class="form__priority-btn-group edit-form__priority-btn-group">
                             <input type="radio" id="edit-form-low" name="priority" value="low">
                             <label for="edit-form-low"
-                                class="form__priority-btn form__priority-edit form__priority-btn--low form__priority-low--active">Low</label>
+                                class="form__priority-btn form__priority-btn--low form__priority-low--active">Low</label>
 
                             <input type="radio" id="edit-form-medium" name="priority" value="medium">
                             <label for="edit-form-medium"
-                                class="form__priority-btn form__priority-edit form__priority-btn--medium">Medium</label>
+                                class="form__priority-btn form__priority-btn--medium">Medium</label>
 
                             <input type="radio" id="edit-form-high" name="priority" value="high">
-                            <label for="edit-form-high"
-                                class="form__priority-btn form__priority-edit form__priority-btn--high">High</label>
+                            <label for="edit-form-high" class="form__priority-btn form__priority-btn--high">High</label>
                         </div>
                     </div>
+
                     <button class="form__submit form__submit--edit">Confirm</button>
                 </form>
             </div>

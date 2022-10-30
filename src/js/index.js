@@ -12,6 +12,24 @@ const controlAddTask = function (id, data) {
   taskView.render(model.currentCategory.tasks[model.currentCategory.tasks.length - 1]);
 };
 
+const controlEditTask = function (data) {
+  model.editTask(data);
+  taskView.renderTaskUpdate(model.currentTask);
+};
+
+const controlDeleteTask = function (id) {
+  model.deleteTask(id);
+};
+
+const controlSelectTask = function (id) {
+  model.selectTask(id);
+  taskView.renderEditModal(model.currentTask);
+};
+
+const controlCompleteTask = function (id) {
+  model.completeTask(id);
+};
+
 const controlAddCategory = function (id, newCategoryName) {
   model.addCategory(id, newCategoryName);
   categoryView.render(model.categories[model.categories.length - 1]);
@@ -28,9 +46,16 @@ const controlSelectCategory = function (id) {
 };
 
 const init = function () {
-  categoryView.addHandlerCreate(controlAddCategory);
-  categoryView.addHandlerDelete(controlDeleteCategory);
-  categoryView.addHandlerSelect(controlSelectCategory);
-  taskView.addHandlerCreate(controlAddTask);
+  categoryView.addHandlerCreateCategory(controlAddCategory);
+  categoryView.addHandlerDeleteCategory(controlDeleteCategory);
+  categoryView.addHandlerSelectCategory(controlSelectCategory);
+  taskView.addHandlerCreateTask(controlAddTask);
+  taskView.addHandlerEditTask(controlEditTask);
+  taskView.addHandlerDeleteTask(controlDeleteTask);
+  taskView.addHandlerSelectTask(controlSelectTask);
+  taskView.addHandlerCompleteTask(controlCompleteTask);
 };
 init();
+
+const checkbox = document.querySelectorAll('.checkbox__icon--check');
+checkbox.forEach(box => box.addEventListener('click', e => console.log(e.target)));

@@ -7,7 +7,7 @@ class CategoryView {
   _btnDelete = [...document.querySelectorAll('.categories__item--delete')];
   _data;
 
-  addHandlerCreate(handler) {
+  addHandlerCreateCategory(handler) {
     this._btnAdd.addEventListener('click', function () {
       const categoryName = document.querySelector('.popup__input--category').value;
       handler(nanoid(), categoryName);
@@ -17,7 +17,7 @@ class CategoryView {
     });
   }
 
-  addHandlerDelete(handler) {
+  addHandlerDeleteCategory(handler) {
     this._categoryContainer.addEventListener('click', function (e) {
       if (!e.target.classList.contains('function-delete' || 'categories__item--delete')) return;
       e.target.closest('.categories__item').classList.add('no-display');
@@ -25,16 +25,19 @@ class CategoryView {
     });
   }
 
-  addHandlerSelect(handler) {
+  addHandlerSelectCategory(handler) {
     this._categoryContainer.addEventListener('mousedown', function (e) {
       const sidebarFilters = document.querySelectorAll('.sidebar__filter-option');
       if (!e.target.classList.contains('function-delete' || 'categories__item--delete'))
         sidebarFilters.forEach(filter => filter.classList.remove('sidebar__filter-option--active'));
       e.target.closest('.categories__item').classList.add('sidebar__filter-option--active');
-      const currentId = e.target.dataset.id;
+      const currentId = e.target.closest('.categories__item').dataset.id;
+      handler(currentId);
       document.querySelector('.add-item--task').classList.remove('no-display');
       document.querySelector('.task-container').innerHTML = '';
-      handler(currentId);
+      document.querySelector('.popup__input--category').value = '';
+      document.querySelector('.popup__category').classList.add('no-display');
+      document.querySelector('.add-item--category').classList.remove('no-display');
     });
   }
 
