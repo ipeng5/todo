@@ -54,5 +54,4 @@ export const completeTask = function (id) {
   const index = currentCategory.tasks.findIndex(task => task.id === id);
   currentTask = currentCategory.tasks[index];
   currentTask.completed = !currentTask.completed;
-  console.log(currentTask.completed);
 };

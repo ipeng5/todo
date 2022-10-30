@@ -34,7 +34,6 @@ class CategoryView {
       const currentId = e.target.closest('.categories__item').dataset.id;
       handler(currentId);
       document.querySelector('.add-item--task').classList.remove('no-display');
-      document.querySelector('.task-container').innerHTML = '';
       document.querySelector('.popup__input--category').value = '';
       document.querySelector('.popup__category').classList.add('no-display');
       document.querySelector('.add-item--category').classList.remove('no-display');

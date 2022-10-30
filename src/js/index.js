@@ -21,9 +21,14 @@ const controlDeleteTask = function (id) {
   model.deleteTask(id);
 };
 
-const controlSelectTask = function (id) {
+const controlEditModal = function (id) {
   model.selectTask(id);
-  taskView.renderEditModal(model.currentTask);
+  taskView.renderEditModal(model.currentTask, model.currentCategory);
+};
+
+const controlViewTask = function (id) {
+  model.selectTask(id);
+  taskView.renderViewModal(model.currentTask, model.currentCategory);
 };
 
 const controlCompleteTask = function (id) {
@@ -52,10 +57,8 @@ const init = function () {
   taskView.addHandlerCreateTask(controlAddTask);
   taskView.addHandlerEditTask(controlEditTask);
   taskView.addHandlerDeleteTask(controlDeleteTask);
-  taskView.addHandlerSelectTask(controlSelectTask);
+  taskView.addHandlerEditModal(controlEditModal);
+  taskView.addHandlerViewModal(controlViewTask);
   taskView.addHandlerCompleteTask(controlCompleteTask);
 };
 init();
-
-const checkbox = document.querySelectorAll('.checkbox__icon--check');
-checkbox.forEach(box => box.addEventListener('click', e => console.log(e.target)));

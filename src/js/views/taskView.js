@@ -29,16 +29,17 @@ class TaskView {
     const formContainer = document.querySelector('.form__container--edit');
 
     overlay.addEventListener('click', function (e) {
-      if (!e.target.classList.contains('form__submit--edit')) return;
-      const editForm = e.target.parentElement;
-      editForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const dataArr = [...new FormData(this)];
-        const data = Object.fromEntries(dataArr);
-        handler(data);
-        overlay.classList.toggle('hidden');
-        formContainer.classList.toggle('form__container--open');
-      });
+      if (e.target.classList.contains('form__submit--edit')) {
+        const editForm = e.target.parentElement;
+        editForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const dataArr = [...new FormData(this)];
+          const data = Object.fromEntries(dataArr);
+          handler(data);
+          overlay.classList.toggle('hidden');
+          formContainer.classList.toggle('form__container--open');
+        });
+      }
     });
   }
 
@@ -81,8 +82,8 @@ class TaskView {
     });
   }
 
-  // Make selected task card 'currentTask'
-  addHandlerSelectTask(handler) {
+  // Click on edit button to open edit modal
+  addHandlerEditModal(handler) {
     this._taskContainer.addEventListener('click', e => {
       if (e.target.classList.contains('function-edit' || 'task--edit')) {
         const dataset = e.target.closest('.task__details').dataset;
@@ -95,6 +96,20 @@ class TaskView {
     });
   }
 
+  // Click on task card to open view modal
+  addHandlerViewModal(handler) {
+    const overlay = document.querySelector('.overlay--view');
+    const viewModal = document.querySelector('.task-view');
+    this._taskContainer.addEventListener('click', e => {
+      if (e.target.classList.contains('task')) {
+        overlay.classList.toggle('hidden');
+        viewModal.classList.toggle('task-view--open');
+        handler(e.target.lastElementChild.dataset.id);
+      }
+    });
+  }
+
+  // Click checkbox to toggle 'completed' status
   addHandlerCompleteTask(handler) {
     this._taskContainer.addEventListener('click', e => {
       if (e.target.classList.contains('checkbox__box')) {
@@ -142,7 +157,6 @@ class TaskView {
     const formTaskTitle = document.querySelector('.edit-form__title--input');
     const formDescription = document.querySelector('.edit-form__description--input');
     const formDueDate = document.querySelector('.edit-form__date--input');
-    const formPriorityGroup = document.querySelector('.edit-form__priority-btn-group');
     const formLowInput = document.querySelector('#edit-form-low');
     const formLowLabel = document.querySelector('#edit-form-low').nextElementSibling;
     const formMediumInput = document.querySelector('#edit-form-medium');
@@ -174,38 +188,50 @@ class TaskView {
     }
   }
 
+  renderViewModal(task, category) {
+    document.querySelector('.task-view__title').textContent = task.title;
+    document.querySelector('.task-view__category--text').textContent = category.categoryName;
+    document.querySelector('.task-view__priority--text').textContent = task.priority;
+    document.querySelector('.task-view__date--text').textContent = task.dueDate;
+    document.querySelector('.task-view__description--text').textContent = task.description;
+    console.log(document.querySelector('.task-view__description--text').textContent);
+  }
+
   // Render task container when choosing a category
   renderAll(tasks) {
     const parentElement = document.querySelector('.task-container');
+    parentElement.innerHTML = '';
     tasks.forEach(task => {
+      console.log(task);
+      console.log(parentElement);
       if (!task) return;
       parentElement.insertAdjacentHTML(
         'afterbegin',
         `
-       <div class="task-card">
-        <div  class="task task--${task.priority}">
-            <div class="task__head">
-                <input type="checkbox" id="${task.id}" class="checkbox__box">
-                <label for="${task.id}" class="checkbox__label">
-                     <span class="checkbox__btn"> </span>
-                     <svg class="checkbox__icon--check">
-                        <use href="sprite.svg#icon-check"></use>
-                     </svg>
-                </label>
-                <p class="task__title  heading-3">${task.title}</p>
+         <div class="task-card">
+          <div  class="task task--${task.priority}">
+              <div class="task__head">
+                  <input type="checkbox" id="${task.id}" class="checkbox__box">
+                  <label for="${task.id}" class="checkbox__label">
+                       <span class="checkbox__btn"> </span>
+                       <svg class="checkbox__icon--check">
+                          <use href="sprite.svg#icon-check"></use>
+                       </svg>
+                  </label>
+                  <p class="task__title  heading-3">${task.title}</p>
+                </div>
+              <div class="task__details" data-id="${task.id}">
+                   <p class="task__date heading-3">${task.dueDate}</p>
+                   <svg class="icon task--edit icon--edit">
+                       <use href="sprite.svg#icon-edit" class="function-edit"></use>
+                  </svg>
+                  <svg class="icon task--delete icon--delete">
+                      <use href="sprite.svg#icon-bin" class="function-delete"></use>
+                   </svg>
               </div>
-            <div class="task__details" data-id="${task.id}">
-                 <p class="task__date heading-3">${task.dueDate}</p>
-                 <svg class="icon task--edit icon--edit">
-                     <use href="sprite.svg#icon-edit" class="function-edit"></use>
-                </svg>
-                <svg class="icon task--delete icon--delete">
-                    <use href="sprite.svg#icon-bin" class="function-delete"></use>
-                 </svg>
             </div>
           </div>
-        </div>
-        `
+          `
       );
     });
   }
