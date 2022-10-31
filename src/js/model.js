@@ -1,4 +1,4 @@
-import { format, parseISO, differenceInDays } from 'date-fns';
+import { format, differenceInDays } from 'date-fns';
 
 export const categories = [];
 export let currentCategory;
@@ -32,7 +32,10 @@ export const addTask = function (id, data) {
 
 export const deleteCategory = function (id) {
   const index = categories.findIndex(el => el.id === id);
+  const categoryArr = [...Object.values(categories)];
   categories.splice(index, 1);
+  filteredCategory.categoryName = 'All';
+  filteredCategory.tasks = categoryArr.flatMap(cat => cat.tasks);
 };
 
 export const selectCategory = function (id) {
@@ -40,29 +43,26 @@ export const selectCategory = function (id) {
 };
 
 export const selectTopFilter = function (id) {
-  const now = new Date();
   const categoryArr = [...Object.values(categories)];
   filteredCategory.tasks = [];
 
   if (id === 'filter--all') {
-    console.log(filteredCategory.tasks);
     filteredCategory.categoryName = 'All';
     filteredCategory.tasks = categoryArr.flatMap(cat => cat.tasks);
-  }
-  if (id === 'filter--today') {
+  } else if (id === 'filter--today') {
     filteredCategory.categoryName = 'Today';
     filteredCategory.tasks = categoryArr
       .flatMap(cat => cat.tasks)
-      .filter(task => task.dueDate === format(now, 'yyyy-MM-dd'));
-  }
-  if (id === 'filter--7days') {
-    const todayDate = format(new Date(), 'yyyy-MM-dd');
+      .filter(task => task.dueDate === format(new Date(), 'yyyy-MM-dd'));
+  } else if (id === 'filter--7days') {
     filteredCategory.categoryName = 'Next 7 days';
     filteredCategory.tasks = categoryArr
-      .flatMap(cat => cat.tasks)
-      .filter(task => {
-        differenceInDays(parseISO(new Date(task.dueDate)), parseISO(new Date())) <= 7;
-      });
+      .flatMap(category => category.tasks)
+      .filter(
+        task =>
+          differenceInDays(new Date(task.dueDate), new Date()) <= 7 &&
+          differenceInDays(new Date(task.dueDate), new Date()) >= 0
+      );
   }
 };
 

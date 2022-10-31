@@ -1,3 +1,4 @@
+import { format, differenceInDays } from 'date-fns';
 import { nanoid } from 'nanoid';
 
 class TaskView {
@@ -38,6 +39,31 @@ class TaskView {
           handler(data);
           overlay.classList.toggle('hidden');
           formContainer.classList.toggle('form__container--open');
+
+          // when a task's due date changed from today to another day while today filter is active
+          const filterToday = document.querySelector('#filter--today');
+          const filter7days = document.querySelector('#filter--7days');
+          if (filterToday.classList.contains('sidebar__filter-option--active')) {
+            const taskCard = document
+              .querySelector(`[data-id="${editForm.dataset.id}"]`)
+              .closest('.task-card');
+            if (data.dueDate !== format(new Date(), 'yyyy-MM-dd'))
+              taskCard.classList.add('no-display');
+          }
+
+          // when a task's due date changed from within 7 days to another day while 'next 7 days' is active
+          if (filter7days.classList.contains('sidebar__filter-option--active')) {
+            const taskCard = document
+              .querySelector(`[data-id="${editForm.dataset.id}"]`)
+              .closest('.task-card');
+            if (
+              differenceInDays(new Date(data.dueDate), new Date()) > 7 ||
+              differenceInDays(new Date(data.dueDate), new Date()) < 0
+            ) {
+              console.log(differenceInDays(new Date(data.dueDate), new Date()));
+              taskCard.classList.add('no-display');
+            }
+          }
         });
       }
     });
@@ -84,9 +110,11 @@ class TaskView {
   addHandlerEditModal(handler) {
     const overlay = document.querySelector('.overlay--edit');
     const formContainer = document.querySelector('.form__container--edit');
-    this._taskContainer.addEventListener('mouseup', e => {
+    const editForm = document.querySelector('.form__content--edit');
+    this._taskContainer.addEventListener('click', e => {
       if (e.target.classList.contains('function-edit' || 'task--edit')) {
         const dataset = e.target.closest('.task__details').dataset;
+        editForm.setAttribute('data-id', dataset.id);
         overlay.classList.toggle('hidden');
         formContainer.classList.toggle('form__container--open');
         handler(dataset.id);

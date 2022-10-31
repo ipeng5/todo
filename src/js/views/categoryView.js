@@ -1,3 +1,5 @@
+import { format, parseISO, differenceInDays } from 'date-fns';
+
 import { nanoid } from 'nanoid';
 
 class CategoryView {
@@ -21,8 +23,8 @@ class CategoryView {
     this._categoryContainer.addEventListener('click', function (e) {
       if (e.target.classList.contains('function-delete' || 'categories__item--delete')) {
         e.target.closest('.categories__item').classList.add('no-display');
-        handler(e.target.closest('.categories__item').dataset.id, 'filter--all');
-        document.querySelector('#filter--all').classList.add('sidebar__filter-option--active');
+        handler(e.target.closest('.categories__item').dataset.id);
+        document.querySelector('.add-item--task').classList.add('no-display');
       }
     });
   }
