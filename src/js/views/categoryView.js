@@ -6,6 +6,7 @@ class CategoryView {
   _parentElement = document.querySelector('.category-container');
   _btnAdd = document.querySelector('.category-popup__add');
   _categoryContainer = document.querySelector('.category-container');
+  _filterTopContainer = document.querySelector('.sidebar__filter');
   _btnDelete = [...document.querySelectorAll('.categories__item--delete')];
   _data;
 
@@ -17,11 +18,25 @@ class CategoryView {
       document.querySelector('.popup__category').classList.toggle('no-display');
       document.querySelector('.add-item--category').classList.toggle('no-display');
     });
+
+    document.addEventListener('keypress', function (e) {
+      const catInput = document.querySelector('.popup__input--category');
+      if (e.key === 'Enter' && catInput === document.activeElement) {
+        const categoryName = document.querySelector('.popup__input--category').value;
+        handler(nanoid(), categoryName);
+        document.querySelector('.popup__input--category').value = '';
+        document.querySelector('.popup__category').classList.toggle('no-display');
+        document.querySelector('.add-item--category').classList.toggle('no-display');
+      }
+    });
   }
 
   addHandlerDeleteCategory(handler) {
     this._categoryContainer.addEventListener('click', function (e) {
-      if (e.target.classList.contains('function-delete' || 'categories__item--delete')) {
+      if (
+        e.target.classList.contains('function-delete') ||
+        e.target.classList.contains('categories__item--delete')
+      ) {
         e.target.closest('.categories__item').classList.add('no-display');
         handler(e.target.closest('.categories__item').dataset.id);
         document.querySelector('.add-item--task').classList.add('no-display');
@@ -29,6 +44,7 @@ class CategoryView {
     });
   }
 
+  // selecting the category filters
   addHandlerSelectFilter(handler) {
     this._categoryContainer.addEventListener('mousedown', e => {
       const sidebarFilters = document.querySelectorAll('.sidebar__filter-option');
@@ -43,31 +59,50 @@ class CategoryView {
     });
   }
 
+  // selecting top filters (all, today, next 7 days)
   addHandlerSidebarFilter(handler) {
-    const topFilters = document.querySelectorAll('.sidebar__top-filter');
-    topFilters.forEach(filter =>
-      filter.addEventListener('mousedown', e => {
-        const sidebarFilters = document.querySelectorAll('.sidebar__filter-option');
-        sidebarFilters.forEach(filter => filter.classList.remove('sidebar__filter-option--active'));
-        e.target.classList.add('sidebar__filter-option--active');
-        handler(e.target.id);
-        if (
-          e.target.id === 'filter--all' ||
-          e.target.id === 'filter--today' ||
-          e.target.id === 'filter--7days'
-        ) {
-          document.querySelector('.add-item--task').classList.add('no-display');
-          document.querySelector('.popup__input--category').value = '';
-          document.querySelector('.popup__category').classList.add('no-display');
-          document.querySelector('.add-item--category').classList.remove('no-display');
-        }
-      })
-    );
+    this._filterTopContainer.addEventListener('mousedown', e => {
+      const sidebarFilters = document.querySelectorAll('.sidebar__filter-option');
+      sidebarFilters.forEach(filter => filter.classList.remove('sidebar__filter-option--active'));
+      e.target.closest('.sidebar__top-filter').classList.add('sidebar__filter-option--active');
+      const id = e.target.closest('.sidebar__top-filter').id;
+      handler(id);
+      if (
+        e.target.id === 'filter--all' ||
+        e.target.id === 'filter--today' ||
+        e.target.id === 'filter--7days'
+      ) {
+        document.querySelector('.add-item--task').classList.add('no-display');
+        document.querySelector('.popup__input--category').value = '';
+        document.querySelector('.popup__category').classList.add('no-display');
+        document.querySelector('.add-item--category').classList.remove('no-display');
+      }
+    });
   }
 
   render(data) {
     this._data = data;
     this._parentElement.insertAdjacentHTML('beforeend', this._generateMarkup());
+  }
+
+  // Render category container when loading the page
+  renderAll(categoryArr) {
+    categoryArr.forEach(category => {
+      this._parentElement.insertAdjacentHTML(
+        'beforeend',
+        `
+               <li class="categories__item sidebar__filter-option heading-4" data-id = ${category.id}>
+                  <svg class="icon">
+                       <use href="sprite.svg#icon-format_list_bulleted"></use>
+                   </svg>
+                  ${category.categoryName}
+                  <svg class="icon categories__item--delete icon--delete">
+                      <use href="sprite.svg#icon-bin" class="function-delete"></use>
+                   </svg>
+              </li>
+      `
+      );
+    });
   }
 
   _generateMarkup() {

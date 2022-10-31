@@ -23,7 +23,7 @@ const controlDeleteTask = function (id) {
 
 const controlEditModal = function (id) {
   model.selectTask(id);
-  taskView.renderEditModal(model.currentTask, model.currentCategory);
+  taskView.renderEditModal(model.currentTask);
 };
 
 const controlViewTask = function (id) {
@@ -38,12 +38,14 @@ const controlCompleteTask = function (id) {
 const controlAddCategory = function (id, newCategoryName) {
   model.addCategory(id, newCategoryName);
   categoryView.render(model.categories[model.categories.length - 1]);
+  taskView.renderMsg(model.categories.length === 0);
 };
 
 const controlDeleteCategory = function (id) {
   model.deleteCategory(id);
   taskTitleView.render(model.filteredCategory.categoryName);
   taskView.renderAll(model.filteredCategory.tasks);
+  taskView.renderMsg(model.categories.length === 0);
 };
 
 const controlSelectCategory = function (id) {
@@ -58,7 +60,14 @@ const controlSelectSidebar = function (id) {
   taskView.renderAll(model.filteredCategory.tasks);
 };
 
+const controlCategories = function () {
+  categoryView.renderAll(model.categoryArr);
+  taskView.renderAll(model.filteredCategory.tasks);
+  taskView.renderMsg(model.categories.length === 0);
+};
+
 const init = function () {
+  taskView.addHandlerInitRender(controlCategories);
   categoryView.addHandlerCreateCategory(controlAddCategory);
   categoryView.addHandlerDeleteCategory(controlDeleteCategory);
   categoryView.addHandlerSelectFilter(controlSelectCategory);
@@ -71,3 +80,5 @@ const init = function () {
   categoryView.addHandlerSidebarFilter(controlSelectSidebar);
 };
 init();
+
+console.log(model.categories.length);

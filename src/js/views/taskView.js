@@ -6,6 +6,7 @@ class TaskView {
   _btnAdd = document.querySelector('.task-popup__add');
   _data;
   _taskContainer = document.querySelector('.task-container');
+  _emptyMsg = document.querySelector('.task-container__empty-message');
 
   // Create a new task
   addHandlerCreateTask(handler) {
@@ -15,10 +16,9 @@ class TaskView {
       const data = Object.fromEntries(dataArr);
       const taskTitle = document.querySelector('.new-form__title--input');
       const id = nanoid();
-
       handler(id, data);
+      // reset form input and close form after submitting
       this.reset();
-      if (!taskTitle) return;
       document.querySelector('.form__container--new').classList.toggle('form__container--open');
       document.querySelector('.overlay--new').classList.toggle('hidden');
     });
@@ -60,7 +60,6 @@ class TaskView {
               differenceInDays(new Date(data.dueDate), new Date()) > 7 ||
               differenceInDays(new Date(data.dueDate), new Date()) < 0
             ) {
-              console.log(differenceInDays(new Date(data.dueDate), new Date()));
               taskCard.classList.add('no-display');
             }
           }
@@ -69,51 +68,32 @@ class TaskView {
     });
   }
 
-  renderTaskUpdate(task) {
-    const taskCard = document.querySelector(`[data-id="${task.id}"]`).closest('.task-card');
-    taskCard.innerHTML = `
-      <div  class="task task--${task.priority ? task.priority : ''}">
-                <div class="task__head">
-                    <input type="checkbox" id="${task.id}" class="checkbox__box">
-                    <label for="${task.id}" class="checkbox__label">
-                         <span class="checkbox__btn"> </span>
-                         <svg class="checkbox__icon--check">
-                            <use href="sprite.svg#icon-check"></use>
-                         </svg>
-                    </label>
-                    <p class="task__title  heading-3">${task.title}</p>
-                  </div>
-                <div class="task__details" data-id="${task.id}">
-                     <p class="task__date heading-3">${task.dueDate}</p>
-                     <svg class="icon task--edit icon--edit">
-                         <use href="sprite.svg#icon-edit" class="function-edit"></use>
-                    </svg>
-                    <svg class="icon task--delete icon--delete">
-                        <use href="sprite.svg#icon-bin" class="function-delete"></use>
-                     </svg>
-                </div>
-            </div>         
-    `;
-  }
-
   // Remove task card
   addHandlerDeleteTask(handler) {
     this._taskContainer.addEventListener('click', e => {
-      if (!e.target.classList.contains('function-delete' || 'task--delete')) return;
-      e.target.closest('.task').classList.add('no-display');
-      const dataset = e.target.closest('.task__details').dataset;
-      handler(dataset.id);
+      if (
+        e.target.classList.contains('function-delete') ||
+        e.target.classList.contains('task--delete')
+      ) {
+        e.target.closest('.task').classList.add('no-display');
+        const dataset = e.target.closest('.task__details').dataset;
+        handler(dataset.id);
+      }
     });
   }
 
-  // Click on edit button to open edit modal
+  // Click on edit button to open task edit modal
   addHandlerEditModal(handler) {
     const overlay = document.querySelector('.overlay--edit');
     const formContainer = document.querySelector('.form__container--edit');
     const editForm = document.querySelector('.form__content--edit');
     this._taskContainer.addEventListener('click', e => {
-      if (e.target.classList.contains('function-edit' || 'task--edit')) {
+      if (
+        e.target.classList.contains('function-edit') ||
+        e.target.classList.contains('task--edit')
+      ) {
         const dataset = e.target.closest('.task__details').dataset;
+        console.log(dataset);
         editForm.setAttribute('data-id', dataset.id);
         overlay.classList.toggle('hidden');
         formContainer.classList.toggle('form__container--open');
@@ -143,6 +123,16 @@ class TaskView {
         handler(e.target.id);
       }
     });
+  }
+
+  // When page load, render localStorage data
+  addHandlerInitRender(handler) {
+    window.addEventListener('load', handler);
+  }
+
+  renderMsg(condition) {
+    if (condition === true) this._emptyMsg.classList.remove('no-display');
+    else this._emptyMsg.classList.add('no-display');
   }
 
   // Render single new task card
@@ -178,7 +168,35 @@ class TaskView {
     );
   }
 
-  // Update form input based on selected task card
+  // Render task changes after form submit
+  renderTaskUpdate(task) {
+    const taskCard = document.querySelector(`[data-id="${task.id}"]`).closest('.task-card');
+    taskCard.innerHTML = `
+      <div  class="task task--${task.priority ? task.priority : ''}">
+                <div class="task__head">
+                    <input type="checkbox" id="${task.id}" class="checkbox__box">
+                    <label for="${task.id}" class="checkbox__label">
+                         <span class="checkbox__btn"> </span>
+                         <svg class="checkbox__icon--check">
+                            <use href="sprite.svg#icon-check"></use>
+                         </svg>
+                    </label>
+                    <p class="task__title  heading-3">${task.title}</p>
+                  </div>
+                <div class="task__details" data-id="${task.id}">
+                     <p class="task__date heading-3">${task.dueDate}</p>
+                     <svg class="icon task--edit icon--edit">
+                         <use href="sprite.svg#icon-edit" class="function-edit"></use>
+                    </svg>
+                    <svg class="icon task--delete icon--delete">
+                        <use href="sprite.svg#icon-bin" class="function-delete"></use>
+                     </svg>
+                </div>
+            </div>         
+    `;
+  }
+
+  // Toggle edit form filled with input of selected task
   renderEditModal(task) {
     const formTaskTitle = document.querySelector('.edit-form__title--input');
     const formDescription = document.querySelector('.edit-form__description--input');
@@ -192,14 +210,13 @@ class TaskView {
     formTaskTitle.value = task.title;
     formDescription.value = task.description;
     formDueDate.value = task.dueDate;
-    if (task.priority === undefined) {
-      formLowInput.checked = false;
-      formLowLabel.classList.remove('form__priority-low--active');
-      formMediumInput.checked = false;
-      formMediumLabel.classList.remove('form__priority-medium--active');
-      formHighInput.checked = false;
-      formHighLabel.classList.remove('form__priority-high--active');
-    }
+    formLowLabel.classList.remove('form__priority-low--active');
+    formMediumLabel.classList.remove('form__priority-medium--active');
+    formHighLabel.classList.remove('form__priority-high--active');
+    formLowInput.checked = false;
+    formMediumInput.checked = false;
+    formHighInput.checked = false;
+
     if (task.priority === 'low') {
       formLowInput.checked = true;
       formLowLabel.classList.add('form__priority-low--active');
@@ -214,6 +231,7 @@ class TaskView {
     }
   }
 
+  // Toggle view modal when click on task card
   renderViewModal(task, category) {
     document.querySelector('.task-view__title').textContent = task.title;
     document.querySelector('.task-view__category--text').textContent = category.categoryName;
@@ -227,7 +245,6 @@ class TaskView {
     const parentElement = document.querySelector('.task-container');
     parentElement.innerHTML = '';
     tasks.forEach(task => {
-      if (!task) return;
       parentElement.insertAdjacentHTML(
         'afterbegin',
         `

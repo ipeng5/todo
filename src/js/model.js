@@ -1,6 +1,7 @@
 import { format, differenceInDays } from 'date-fns';
 
-export const categories = [];
+export let categories = [];
+export let categoryArr = [];
 export let currentCategory;
 export let currentTask;
 export let filteredCategory = {
@@ -17,6 +18,7 @@ export const addCategory = function (id, categoryName) {
   newCategory.id = id;
   newCategory.categoryName = categoryName;
   categories.push(newCategory);
+  setLocalStorage();
 };
 
 export const addTask = function (id, data) {
@@ -28,14 +30,17 @@ export const addTask = function (id, data) {
   newTask.priority = data.priority;
   newTask.completed = false;
   currentCategory.tasks.push(newTask);
+  setLocalStorage();
 };
 
 export const deleteCategory = function (id) {
   const index = categories.findIndex(el => el.id === id);
-  const categoryArr = [...Object.values(categories)];
+  filteredCategory.tasks = [];
   categories.splice(index, 1);
+  categoryArr = [...Object.values(categories)];
   filteredCategory.categoryName = 'All';
   filteredCategory.tasks = categoryArr.flatMap(cat => cat.tasks);
+  setLocalStorage();
 };
 
 export const selectCategory = function (id) {
@@ -43,7 +48,7 @@ export const selectCategory = function (id) {
 };
 
 export const selectTopFilter = function (id) {
-  const categoryArr = [...Object.values(categories)];
+  categoryArr = [...Object.values(categories)];
   filteredCategory.tasks = [];
 
   if (id === 'filter--all') {
@@ -69,11 +74,12 @@ export const selectTopFilter = function (id) {
 export const deleteTask = function (id) {
   const index = currentCategory.tasks.findIndex(task => task.id === id);
   currentCategory.tasks.splice(index, 1);
+  setLocalStorage();
 };
 
 export const selectTask = function (id) {
-  const index = currentCategory.tasks.findIndex(task => task.id === id);
-  currentTask = currentCategory.tasks[index];
+  categoryArr = [...Object.values(categories)];
+  [currentTask] = categoryArr.flatMap(cat => cat.tasks).filter(task => task.id === id);
 };
 
 export const editTask = function (data) {
@@ -81,10 +87,25 @@ export const editTask = function (data) {
   currentTask.description = data.description;
   currentTask.dueDate = data.dueDate;
   currentTask.priority = data.priority;
+  setLocalStorage();
 };
 
 export const completeTask = function (id) {
   const index = currentCategory.tasks.findIndex(task => task.id === id);
   currentTask = currentCategory.tasks[index];
   currentTask.completed = !currentTask.completed;
+  setLocalStorage();
 };
+
+function setLocalStorage() {
+  localStorage.setItem('categories', JSON.stringify(categories));
+}
+
+function getLocalStorage() {
+  const data = JSON.parse(localStorage.getItem('categories'));
+  if (!data) return;
+  categories = data;
+  categoryArr = [...Object.values(categories)];
+  filteredCategory.tasks = categoryArr.flatMap(cat => cat.tasks);
+}
+getLocalStorage();

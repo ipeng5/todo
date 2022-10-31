@@ -54,34 +54,14 @@
                 </ul>
 
                 <div class="sidebar__category-group">
-                    <div class="sidebar__category-title heading-2">Categories</div>
+                    <div class="sidebar__category-title heading-2">Projects</div>
 
-                    <ul class="categories category-container">
-                        <!-- <li class="categories__item sidebar__filter-option heading-4" data-id="abcd123random">
-                            <svg class="icon ">
-                                <use href="sprite.svg#icon-format_list_bulleted"></use>
-                            </svg>
-                            Category 1123456789011245
-                            <svg class="icon categories__item--delete icon--delete">
-                                <use href="sprite.svg#icon-bin" class="function-delete"></use>
-                            </svg>
-                        </li>
-
-                        <li class="categories__item sidebar__filter-option heading-4" data-id="abcd123randsggsm">
-                            <svg class="icon ">
-                                <use href="sprite.svg#icon-format_list_bulleted"></use>
-                            </svg>
-                            Category 2
-                            <svg class="icon categories__item--delete icon--delete">
-                                <use href="sprite.svg#icon-bin" class="function-delete"></use>
-                            </svg>
-                        </li> -->
-
+                    <ul class="category-container">
                     </ul>
 
                     <div class="popup popup__category  no-display">
                         <input type="text" class="popup__input popup__input--category" maxlength="25"
-                            placeholder="Category name" required>
+                            placeholder="Project name" required>
                         <div class="popup__btns">
                             <button class="btn btn--cancel category-popup__cancel">Cancel</button>
                             <button class="btn btn--add category-popup__add">Add</button>
@@ -92,7 +72,7 @@
                         <svg class="icon">
                             <use href="sprite.svg#icon-plus"></use>
                         </svg>
-                        Create category
+                        Create project
                     </div>
 
                 </div>
@@ -101,8 +81,9 @@
 
         <main>
             <div class="task--category-container"><span class="task--category">All</span></div>
+            <div class="task-container__empty-message">Create or select a project and add tasks to it&nbsp&nbsp🚀</div>
             <div class="task-container">
-                <div class="task-card">
+                <!-- <div class="task-card">
                     <div class="task task--high task--completed">
                         <div class="task__head">
                             <input type="checkbox" id="task1" class="checkbox__box" checked>
@@ -124,7 +105,7 @@
                             </svg>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
 
                 <!--  <div class="task  task--medium">
@@ -280,19 +261,16 @@
                 <!-- <div class="task-view task-view--open"> -->
                 <div class="task-view--close">&times;</div>
                 <div class="task-view__content">
-                    <div class="task-view__title">Go shopping</div>
-                    <div class="task-view__category"><span class="task-view__name">Category:</span><span
-                            class="task-view__category--text">Diet.</span></div>
+                    <div class="task-view__title"> </div>
+                    <div class="task-view__category"><span class="task-view__name">Project:</span><span
+                            class="task-view__category--text"></span></div>
                     <div class="task-view__priority"><span class="task-view__name">Priority:</span><span
-                            class="task-view__priority--text">High</span></div>
+                            class="task-view__priority--text"></span></div>
                     <div class="task-view__date"><span class="task-view__name">Due Date:</span><span
-                            class="task-view__date--text">2-22-2</span>
+                            class="task-view__date--text"></span>
                     </div>
                     <div class="task-view__description"><span class="task-view__name">Description: </span><span
-                            class="task-view__description--text">Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit.
-                            Similique eveniet libero aperiam. Voluptate retempore lorem, deleniti quaerat laudantium
-                            obcaecati</span></div>
+                            class="task-view__description--text"></span></div>
                 </div>
             </div>
         </div>
