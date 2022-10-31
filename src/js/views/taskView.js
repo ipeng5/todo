@@ -14,10 +14,9 @@ class TaskView {
       e.preventDefault();
       const dataArr = [...new FormData(this)];
       const data = Object.fromEntries(dataArr);
-      const taskTitle = document.querySelector('.new-form__title--input');
       const id = nanoid();
       handler(id, data);
-      // reset form input and close form after submitting
+      // Reset form input and close form after submitting
       this.reset();
       document.querySelector('.form__container--new').classList.toggle('form__container--open');
       document.querySelector('.overlay--new').classList.toggle('hidden');
@@ -75,9 +74,10 @@ class TaskView {
         e.target.classList.contains('function-delete') ||
         e.target.classList.contains('task--delete')
       ) {
-        e.target.closest('.task').classList.add('no-display');
-        const dataset = e.target.closest('.task__details').dataset;
-        handler(dataset.id);
+        e.target.closest('.task-card').classList.add('no-display');
+        const taskDataset = e.target.closest('.task__details').dataset;
+        const catDataset = e.target.closest('.task-card').dataset;
+        handler(taskDataset.id, catDataset.catId);
       }
     });
   }
@@ -136,12 +136,12 @@ class TaskView {
   }
 
   // Render single new task card
-  render(task) {
+  render(categoryId, task) {
     const parentElement = document.querySelector('.task-container');
     parentElement.insertAdjacentHTML(
       'afterbegin',
       `
-         <div class="task-card">
+         <div class="task-card" data-cat-id =${categoryId}>
             <div  class="task task--${task.priority}">
                 <div class="task__head">
                     <input type="checkbox" id="${task.id}" class="checkbox__box">
@@ -248,7 +248,7 @@ class TaskView {
       parentElement.insertAdjacentHTML(
         'afterbegin',
         `
-         <div class="task-card">
+         <div class="task-card" data-cat-id =${task.categoryId}>
           <div  class="task task--${task.priority}">
               <div class="task__head">
                   <input type="checkbox" id="${task.id}" class="checkbox__box">

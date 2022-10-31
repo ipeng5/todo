@@ -9,7 +9,10 @@ import updatePriority from './views/priorityBtnView.js';
 
 const controlAddTask = function (id, data) {
   model.addTask(id, data);
-  taskView.render(model.currentCategory.tasks[model.currentCategory.tasks.length - 1]);
+  taskView.render(
+    model.currentCategory.id,
+    model.currentCategory.tasks[model.currentCategory.tasks.length - 1]
+  );
 };
 
 const controlEditTask = function (data) {
@@ -17,8 +20,8 @@ const controlEditTask = function (data) {
   taskView.renderTaskUpdate(model.currentTask);
 };
 
-const controlDeleteTask = function (id) {
-  model.deleteTask(id);
+const controlDeleteTask = function (id, categoryId) {
+  model.deleteTask(id, categoryId);
 };
 
 const controlEditModal = function (id) {
@@ -80,5 +83,3 @@ const init = function () {
   categoryView.addHandlerSidebarFilter(controlSelectSidebar);
 };
 init();
-
-console.log(model.categories.length);

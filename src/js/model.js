@@ -29,7 +29,10 @@ export const addTask = function (id, data) {
   newTask.dueDate = data.dueDate;
   newTask.priority = data.priority;
   newTask.completed = false;
+  newTask.categoryId = currentCategory.id;
   currentCategory.tasks.push(newTask);
+  console.log(newTask);
+  console.log(currentCategory);
   setLocalStorage();
 };
 
@@ -71,12 +74,6 @@ export const selectTopFilter = function (id) {
   }
 };
 
-export const deleteTask = function (id) {
-  const index = currentCategory.tasks.findIndex(task => task.id === id);
-  currentCategory.tasks.splice(index, 1);
-  setLocalStorage();
-};
-
 export const selectTask = function (id) {
   categoryArr = [...Object.values(categories)];
   [currentTask] = categoryArr.flatMap(cat => cat.tasks).filter(task => task.id === id);
@@ -87,6 +84,13 @@ export const editTask = function (data) {
   currentTask.description = data.description;
   currentTask.dueDate = data.dueDate;
   currentTask.priority = data.priority;
+  setLocalStorage();
+};
+
+export const deleteTask = function (id, categoryId) {
+  const catIndex = categories.findIndex(cat => cat.id === categoryId);
+  const taskIndex = categories[catIndex].tasks.findIndex(task => task.id === id);
+  categories[catIndex].tasks.splice(taskIndex, 1);
   setLocalStorage();
 };
 
