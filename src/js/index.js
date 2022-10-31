@@ -24,18 +24,19 @@ const controlDeleteTask = function (id, categoryId) {
   model.deleteTask(id, categoryId);
 };
 
-const controlEditModal = function (id) {
-  model.selectTask(id);
+const controlEditModal = function (id, categoryId) {
+  model.selectTask(id, categoryId);
   taskView.renderEditModal(model.currentTask);
 };
 
-const controlViewTask = function (id) {
-  model.selectTask(id);
+const controlViewTask = function (id, categoryId) {
+  model.selectTask(id, categoryId);
   taskView.renderViewModal(model.currentTask, model.currentCategory);
 };
 
-const controlCompleteTask = function (id) {
-  model.completeTask(id);
+const controlCompleteTask = function (id, categoryId) {
+  model.completeTask(id, categoryId);
+  taskView.renderTaskComplete(model.currentTask);
 };
 
 const controlAddCategory = function (id, newCategoryName) {

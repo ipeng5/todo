@@ -9,7 +9,7 @@ class TaskPopupView {
   _btnEditCancel = document.querySelector('.edit-form__header--btn-close');
   _btnViewClose = document.querySelector('.task-view--close');
   _btnSubmit = document.querySelector('.form__submit--new');
-  _tastView = document.querySelector('.task-view');
+  _taskView = document.querySelector('.task-view');
 
   constructor() {
     this._addHandlerShowPopup();
@@ -26,16 +26,42 @@ class TaskPopupView {
   cancelPopup() {
     this._overlay.classList.toggle('hidden');
     this._popup.classList.toggle('form__container--open');
+    const newForm = document.querySelector('.form__content--new');
+    const formLowInput = document.querySelector('#new-form-low');
+    const formLowLabel = document.querySelector('#new-form-low').nextElementSibling;
+    const formMediumInput = document.querySelector('#new-form-medium');
+    const formMediumLabel = document.querySelector('#new-form-medium').nextElementSibling;
+    const formHighInput = document.querySelector('#new-form-high');
+    const formHighLabel = document.querySelector('#new-form-high').nextElementSibling;
+    newForm.reset();
+    formLowLabel.classList.remove('form__priority-low--active');
+    formMediumLabel.classList.remove('form__priority-medium--active');
+    formHighLabel.classList.remove('form__priority-high--active');
+    formLowInput.checked = false;
+    formMediumInput.checked = false;
+    formHighInput.checked = false;
   }
 
   cancelEditPopup() {
     this._overlayEdit.classList.toggle('hidden');
     this._popupEdit.classList.toggle('form__container--open');
+    const formLowInput = document.querySelector('#edit-form-low');
+    const formLowLabel = document.querySelector('#edit-form-low').nextElementSibling;
+    const formMediumInput = document.querySelector('#edit-form-medium');
+    const formMediumLabel = document.querySelector('#edit-form-medium').nextElementSibling;
+    const formHighInput = document.querySelector('#edit-form-high');
+    const formHighLabel = document.querySelector('#edit-form-high').nextElementSibling;
+    formLowLabel.classList.remove('form__priority-low--active');
+    formMediumLabel.classList.remove('form__priority-medium--active');
+    formHighLabel.classList.remove('form__priority-high--active');
+    formLowInput.checked = false;
+    formMediumInput.checked = false;
+    formHighInput.checked = false;
   }
 
   closeView() {
     this._overlayView.classList.toggle('hidden');
-    this._tastView.classList.toggle('task-view--open');
+    this._taskView.classList.toggle('task-view--open');
   }
 
   _addHandlerShowPopup() {

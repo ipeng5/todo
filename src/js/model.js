@@ -31,13 +31,11 @@ export const addTask = function (id, data) {
   newTask.completed = false;
   newTask.categoryId = currentCategory.id;
   currentCategory.tasks.push(newTask);
-  console.log(newTask);
-  console.log(currentCategory);
   setLocalStorage();
 };
 
 export const deleteCategory = function (id) {
-  const index = categories.findIndex(el => el.id === id);
+  const index = categories.findIndex(category => category.id === id);
   filteredCategory.tasks = [];
   categories.splice(index, 1);
   categoryArr = [...Object.values(categories)];
@@ -74,9 +72,11 @@ export const selectTopFilter = function (id) {
   }
 };
 
-export const selectTask = function (id) {
-  categoryArr = [...Object.values(categories)];
-  [currentTask] = categoryArr.flatMap(cat => cat.tasks).filter(task => task.id === id);
+export const selectTask = function (id, categoryId) {
+  const catIndex = categories.findIndex(cat => cat.id === categoryId);
+  const taskIndex = categories[catIndex].tasks.findIndex(task => task.id === id);
+  currentTask = categories[catIndex].tasks[taskIndex];
+  currentCategory = categories[catIndex];
 };
 
 export const editTask = function (data) {
@@ -94,10 +94,12 @@ export const deleteTask = function (id, categoryId) {
   setLocalStorage();
 };
 
-export const completeTask = function (id) {
-  const index = currentCategory.tasks.findIndex(task => task.id === id);
-  currentTask = currentCategory.tasks[index];
-  currentTask.completed = !currentTask.completed;
+export const completeTask = function (id, categoryId) {
+  const catIndex = categories.findIndex(cat => cat.id === categoryId);
+  const taskIndex = categories[catIndex].tasks.findIndex(task => task.id === id);
+  categories[catIndex].tasks[taskIndex].completed =
+    !categories[catIndex].tasks[taskIndex].completed;
+  currentTask = categories[catIndex].tasks[taskIndex];
   setLocalStorage();
 };
 

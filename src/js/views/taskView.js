@@ -16,10 +16,23 @@ class TaskView {
       const data = Object.fromEntries(dataArr);
       const id = nanoid();
       handler(id, data);
+
       // Reset form input and close form after submitting
       this.reset();
       document.querySelector('.form__container--new').classList.toggle('form__container--open');
       document.querySelector('.overlay--new').classList.toggle('hidden');
+      const formLowInput = document.querySelector('#new-form-low');
+      const formLowLabel = document.querySelector('#new-form-low').nextElementSibling;
+      const formMediumInput = document.querySelector('#new-form-medium');
+      const formMediumLabel = document.querySelector('#new-form-medium').nextElementSibling;
+      const formHighInput = document.querySelector('#new-form-high');
+      const formHighLabel = document.querySelector('#new-form-high').nextElementSibling;
+      formLowLabel.classList.remove('form__priority-low--active');
+      formMediumLabel.classList.remove('form__priority-medium--active');
+      formHighLabel.classList.remove('form__priority-high--active');
+      formLowInput.checked = false;
+      formMediumInput.checked = false;
+      formHighInput.checked = false;
     });
   }
 
@@ -93,11 +106,11 @@ class TaskView {
         e.target.classList.contains('task--edit')
       ) {
         const dataset = e.target.closest('.task__details').dataset;
-        console.log(dataset);
+        const categoryDataset = e.target.closest('.task-card').dataset;
         editForm.setAttribute('data-id', dataset.id);
         overlay.classList.toggle('hidden');
         formContainer.classList.toggle('form__container--open');
-        handler(dataset.id);
+        handler(dataset.id, categoryDataset.catId);
       }
     });
   }
@@ -110,7 +123,9 @@ class TaskView {
       if (e.target.classList.contains('task')) {
         overlay.classList.toggle('hidden');
         viewModal.classList.toggle('task-view--open');
-        handler(e.target.lastElementChild.dataset.id);
+        const id = e.target.lastElementChild.dataset.id;
+        const catId = e.target.closest('.task-card').dataset.catId;
+        handler(id, catId);
       }
     });
   }
@@ -119,10 +134,16 @@ class TaskView {
   addHandlerCompleteTask(handler) {
     this._taskContainer.addEventListener('click', e => {
       if (e.target.classList.contains('checkbox__box')) {
-        e.target.closest('.task').classList.toggle('task--completed');
-        handler(e.target.id);
+        const id = e.target.closest('.task__head').firstElementChild.id;
+        const catDataset = e.target.closest('.task-card').dataset;
+        handler(id, catDataset.catId);
       }
     });
+  }
+
+  renderTaskComplete(task) {
+    const checkbox = document.querySelector(`[data-id="${task.id}"]`);
+    checkbox.closest('.task').classList.toggle('task--completed');
   }
 
   // When page load, render localStorage data
@@ -142,9 +163,13 @@ class TaskView {
       'afterbegin',
       `
          <div class="task-card" data-cat-id =${categoryId}>
-            <div  class="task task--${task.priority}">
-                <div class="task__head">
-                    <input type="checkbox" id="${task.id}" class="checkbox__box">
+<div  class="task task--${task.priority ? task.priority : ''} ${
+        task.completed ? 'task--completed' : ''
+      }">                
+      <div class="task__head">
+                    <input type="checkbox" id="${task.id}" class="checkbox__box" ${
+        task.completed ? 'checked' : ''
+      }>
                     <label for="${task.id}" class="checkbox__label">
                          <span class="checkbox__btn"> </span>
                          <svg class="checkbox__icon--check">
@@ -172,9 +197,13 @@ class TaskView {
   renderTaskUpdate(task) {
     const taskCard = document.querySelector(`[data-id="${task.id}"]`).closest('.task-card');
     taskCard.innerHTML = `
-      <div  class="task task--${task.priority ? task.priority : ''}">
+      <div  class="task task--${task.priority ? task.priority : ''} ${
+      task.completed ? 'task--completed' : ''
+    }">
                 <div class="task__head">
-                    <input type="checkbox" id="${task.id}" class="checkbox__box">
+                     <input type="checkbox" id="${task.id}" class="checkbox__box" ${
+      task.completed ? 'checked' : ''
+    }>
                     <label for="${task.id}" class="checkbox__label">
                          <span class="checkbox__btn"> </span>
                          <svg class="checkbox__icon--check">
@@ -249,9 +278,11 @@ class TaskView {
         'afterbegin',
         `
          <div class="task-card" data-cat-id =${task.categoryId}>
-          <div  class="task task--${task.priority}">
-              <div class="task__head">
-                  <input type="checkbox" id="${task.id}" class="checkbox__box">
+<div  class="task task--${task.priority ? task.priority : ''} ${
+          task.completed ? 'task--completed' : ''
+        }">              
+<div class="task__head">
+    <input type="checkbox" id="${task.id}" class="checkbox__box" ${task.completed ? 'checked' : ''}>
                   <label for="${task.id}" class="checkbox__label">
                        <span class="checkbox__btn"> </span>
                        <svg class="checkbox__icon--check">
