@@ -20,12 +20,12 @@ class TaskPopupView {
 
   showPopup() {
     this._overlay.classList.toggle('hidden');
-    this._popup.classList.toggle('form__container--open');
+    this._popup.classList.toggle('no-display');
   }
 
   cancelPopup() {
     this._overlay.classList.toggle('hidden');
-    this._popup.classList.toggle('form__container--open');
+    this._popup.classList.toggle('no-display');
     const newForm = document.querySelector('.form__content--new');
     const formLowInput = document.querySelector('#new-form-low');
     const formLowLabel = document.querySelector('#new-form-low').nextElementSibling;
@@ -44,7 +44,7 @@ class TaskPopupView {
 
   cancelEditPopup() {
     this._overlayEdit.classList.toggle('hidden');
-    this._popupEdit.classList.toggle('form__container--open');
+    this._popupEdit.classList.toggle('no-display');
     const formLowInput = document.querySelector('#edit-form-low');
     const formLowLabel = document.querySelector('#edit-form-low').nextElementSibling;
     const formMediumInput = document.querySelector('#edit-form-medium');
@@ -61,7 +61,7 @@ class TaskPopupView {
 
   closeView() {
     this._overlayView.classList.toggle('hidden');
-    this._taskView.classList.toggle('task-view--open');
+    this._taskView.classList.toggle('no-display');
   }
 
   _addHandlerShowPopup() {

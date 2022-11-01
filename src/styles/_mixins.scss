@@ -33,11 +33,6 @@
   }
 }
 
-@mixin popupOpen {
-  transform: scale(1);
-  visibility: visible;
-}
-
 // Media query manager
 @mixin respond($breakpoint) {
   @if $breakpoint == big-desktop {

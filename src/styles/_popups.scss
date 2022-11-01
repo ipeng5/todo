@@ -60,14 +60,9 @@
   display: flex;
   align-items: center;
   transition: all 0.3s;
-  transform: scale(0.5);
 
   @include respond(phone) {
     width: 80%;
-  }
-
-  &--open {
-    @include popupOpen;
   }
 
   &--close {

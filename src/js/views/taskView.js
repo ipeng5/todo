@@ -19,7 +19,7 @@ class TaskView {
 
       // Reset form input and close form after submitting
       this.reset();
-      document.querySelector('.form__container--new').classList.remove('form__container--open');
+      document.querySelector('.form__container--new').classList.remove('no-display');
       document.querySelector('.overlay--new').classList.add('hidden');
       const formLowInput = document.querySelector('#new-form-low');
       const formLowLabel = document.querySelector('#new-form-low').nextElementSibling;
@@ -50,7 +50,7 @@ class TaskView {
           const data = Object.fromEntries(dataArr);
           handler(data);
           overlay.classList.add('hidden');
-          formContainer.classList.remove('form__container--open');
+          formContainer.classList.remove('no-display');
 
           // When a task's due date changed from today to another day while today filter is active
           const filterToday = document.querySelector('#filter--today');
@@ -109,7 +109,7 @@ class TaskView {
         const categoryDataset = e.target.closest('.task-card').dataset;
         editForm.setAttribute('data-id', dataset.id);
         overlay.classList.toggle('hidden');
-        formContainer.classList.toggle('form__container--open');
+        formContainer.classList.toggle('no-display');
         handler(dataset.id, categoryDataset.catId);
       }
     });
@@ -122,7 +122,7 @@ class TaskView {
     this._taskContainer.addEventListener('click', e => {
       if (e.target.classList.contains('task') || e.target.classList.contains('task__title')) {
         overlay.classList.toggle('hidden');
-        viewModal.classList.toggle('task-view--open');
+        viewModal.classList.toggle('no-display');
         const id = e.target.lastElementChild.dataset.id;
         const catId = e.target.closest('.task-card').dataset.catId;
         handler(id, catId);

@@ -8,16 +8,12 @@
     border-radius: 5px;
     overflow: hidden;
     transition: all 0.3s;
-    transform: scale(0.5);
-
-    &--open {
-      @include popupOpen;
-    }
   }
 
   &__header {
     background-color: var(--form-header-bg);
     padding: 2rem;
+    position: relative;
 
     &--heading {
       font-size: 3rem;
