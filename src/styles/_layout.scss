@@ -59,6 +59,7 @@
     transform: translateX(100%);
     top: 12rem;
     height: calc(100vh - 12rem);
+    background-color: var(--sidebar-bg-dark);
   }
 
   &__filter-option {
