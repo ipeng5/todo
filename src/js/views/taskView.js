@@ -52,18 +52,18 @@ class TaskView {
           overlay.classList.add('hidden');
           formContainer.classList.remove('form__container--open');
 
-          // when a task's due date changed from today to another day while today filter is active
+          // When a task's due date changed from today to another day while today filter is active
           const filterToday = document.querySelector('#filter--today');
           const filter7days = document.querySelector('#filter--7days');
           if (filterToday.classList.contains('sidebar__filter-option--active')) {
             const taskCard = document
               .querySelector(`[data-id="${editForm.dataset.id}"]`)
               .closest('.task-card');
-            if (data.dueDate !== format(new Date(), 'yyyy-MM-dd')) taskCard.style.display = 'none';
-            // taskCard.classList.add('no-display'); TODO
+            if (data.dueDate !== format(new Date(), 'yyyy-MM-dd'))
+              taskCard.classList.add('no-display');
           }
 
-          // when a task's due date changed from within 7 days to another day while 'next 7 days' is active
+          // When a task's due date changed from within 7 days to another day while 'next 7 days' is active
           if (filter7days.classList.contains('sidebar__filter-option--active')) {
             const taskCard = document
               .querySelector(`[data-id="${editForm.dataset.id}"]`)
@@ -72,8 +72,7 @@ class TaskView {
               differenceInDays(new Date(data.dueDate), new Date()) > 7 ||
               differenceInDays(new Date(data.dueDate), new Date()) < 0
             ) {
-              taskCard.style.display = 'none';
-              // taskCard.classList.add('no-display'); TODO
+              taskCard.classList.add('no-display');
             }
           }
         });
@@ -88,8 +87,7 @@ class TaskView {
         e.target.classList.contains('function-delete') ||
         e.target.classList.contains('task--delete')
       ) {
-        e.target.closest('.task-card').style.display = 'none';
-        // e.target.closest('.task-card').classList.add('no-display'); TODO
+        e.target.closest('.task-card').classList.add('no-display');
         const taskDataset = e.target.closest('.task__details').dataset;
         const catDataset = e.target.closest('.task-card').dataset;
         handler(taskDataset.id, catDataset.catId);
@@ -122,7 +120,7 @@ class TaskView {
     const overlay = document.querySelector('.overlay--view');
     const viewModal = document.querySelector('.task-view');
     this._taskContainer.addEventListener('click', e => {
-      if (e.target.classList.contains('task')) {
+      if (e.target.classList.contains('task') || e.target.classList.contains('task__title')) {
         overlay.classList.toggle('hidden');
         viewModal.classList.toggle('task-view--open');
         const id = e.target.lastElementChild.dataset.id;
@@ -154,10 +152,8 @@ class TaskView {
   }
 
   renderMsg(condition) {
-    if (condition === true) this._emptyMsg.style.display = '';
-    // if (condition === true) this._emptyMsg.classList.remove('no-display'); TODO
-    else this._emptyMsg.style.display = 'none';
-    // else this._emptyMsg.classList.add('no-display'); TODO
+    if (condition === true) this._emptyMsg.classList.remove('no-display');
+    else this._emptyMsg.classList.add('no-display');
   }
 
   // Render single new task card
@@ -199,34 +195,21 @@ class TaskView {
 
   // Render task changes after form submit
   renderTaskUpdate(task) {
-    const taskCard = document.querySelector(`[data-id="${task.id}"]`).closest('.task-card');
-    taskCard.innerHTML = `
-      <div  class="task task--${task.priority ? task.priority : ''} ${
-      task.completed ? 'task--completed' : ''
-    }">
-                <div class="task__head">
-                     <input type="checkbox" id="${task.id}" class="checkbox__box" ${
-      task.completed ? 'checked' : ''
-    }>
-                    <label for="${task.id}" class="checkbox__label">
-                         <span class="checkbox__btn"> </span>
-                         <svg class="checkbox__icon--check">
-                            <use href="sprite.svg#icon-check"></use>
-                         </svg>
-                    </label>
-                    <p class="task__title  heading-3">${task.title}</p>
-                  </div>
-                <div class="task__details" data-id="${task.id}">
-                     <p class="task__date heading-3">${task.dueDate}</p>
-                     <svg class="icon task--edit icon--edit">
-                         <use href="sprite.svg#icon-edit" class="function-edit"></use>
-                    </svg>
-                    <svg class="icon task--delete icon--delete">
-                        <use href="sprite.svg#icon-bin" class="function-delete"></use>
-                     </svg>
-                </div>
-            </div>         
-    `;
+    const details = document.querySelector(`[data-id="${task.id}"]`);
+    const taskItem = details.closest('.task');
+    const checkbox = document.getElementById(`${task.id}`);
+    const text = taskItem.firstElementChild.lastElementChild;
+    const taskDate = details.firstElementChild;
+
+    taskItem.removeAttribute('class');
+    taskItem.classList.add(
+      'task',
+      `task--${task.priority ? task.priority : ''}`,
+      `task--${task.completed ? 'completed' : ''}`
+    );
+    checkbox.checked = true;
+    text.textContent = task.title;
+    taskDate.textContent = task.dueDate;
   }
 
   // Toggle edit form filled with input of selected task

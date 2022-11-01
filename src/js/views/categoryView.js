@@ -49,9 +49,9 @@ class CategoryView {
     this._categoryContainer.addEventListener('mousedown', e => {
       const sidebarFilters = document.querySelectorAll('.sidebar__filter-option');
       sidebarFilters.forEach(filter => filter.classList.remove('sidebar__filter-option--active'));
-      e.target.closest('.categories__item').classList.add('sidebar__filter-option--active');
-      const currentId = e.target.closest('.categories__item').dataset.id;
-      handler(currentId);
+      e.target.closest('.categories__item')?.classList.add('sidebar__filter-option--active');
+      const currentId = e.target.closest('.categories__item')?.dataset.id;
+      handler(currentId ? currentId : '');
       document.querySelector('.add-item--task').classList.remove('no-display');
       document.querySelector('.popup__input--category').value = '';
       document.querySelector('.popup__category').classList.add('no-display');

@@ -14,6 +14,10 @@
   }
 }
 
+.task-card {
+  width: 100%;
+}
+
 .task {
   height: 6rem;
   width: 100%;
@@ -30,16 +34,55 @@
   cursor: pointer;
   transition: all 0.2s;
 
+  @include respond(tab-land) {
+    height: 8rem;
+  }
+
+  @include respond(phone) {
+    padding: 0 1.2rem 0 3.2rem;
+    border-left: 4px solid var(--task-bg);
+    border-right: 4px solid var(--task-bg);
+  }
+
+  &__title {
+    @include respond(phone) {
+      padding: 0 1rem;
+    }
+  }
+
+  &:hover {
+    background-color: var(--task-hover);
+    border-left: 6px solid var(--task-hover);
+    border-right: 6px solid var(--task-hover);
+
+    @include respond(phone) {
+      border-left: 4px solid var(--task-bg);
+      border-right: 4px solid var(--task-bg);
+    }
+  }
+
   &--high {
-    border-left: 6px solid rgba(#f77b72, 0.6);
+    border-left: 6px solid var(--p1) !important;
+
+    @include respond(phone) {
+      border-left: 4px solid var(--p1) !important;
+    }
   }
 
   &--medium {
-    border-left: 6px solid rgba(#ffb74d, 0.6);
+    border-left: 6px solid var(--p2) !important;
+
+    @include respond(phone) {
+      border-left: 4px solid var(--p2) !important;
+    }
   }
 
   &--low {
-    border-left: 6px solid rgba(#4db6ac, 0.6);
+    border-left: 6px solid var(--primary) !important;
+
+    @include respond(phone) {
+      border-left: 4px solid var(--primary) !important;
+    }
   }
 
   &--completed {
@@ -59,6 +102,14 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+
+    @include respond(phone) {
+      gap: 0.8rem;
+    }
+  }
+
+  &__date {
+    min-width: 70px;
   }
 
   &--category-container {
@@ -67,9 +118,9 @@
     padding-top: 3.2rem;
     font-size: 5rem;
     color: var(--primary);
-  }
 
-  &:hover {
-    background-color: var(--task-hover);
+    @include respond(phone) {
+      font-size: 4.5rem;
+    }
   }
 }

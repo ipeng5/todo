@@ -26,11 +26,11 @@
 
     &--btn-close {
       position: absolute;
-      top: 2rem;
+      top: 1rem;
       right: 1rem;
       color: white;
       background-color: transparent;
-      line-height: 1rem;
+      line-height: 1;
       font-size: 4rem;
       border: none;
       cursor: pointer;
@@ -137,6 +137,7 @@
 
       &:hover {
         background-color: var(--p1);
+        color: var(--main-bg);
       }
     }
 
@@ -146,6 +147,7 @@
 
       &:hover {
         background-color: var(--p2);
+        color: var(--main-bg);
       }
     }
 
@@ -155,6 +157,7 @@
 
       &:hover {
         background-color: var(--primary);
+        color: var(--main-bg);
       }
     }
   }

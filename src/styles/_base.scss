@@ -23,24 +23,22 @@
   --input-bg: #fff;
   --input-border: #e2e2e2;
   --input-focus: #99d5cf;
-  --input-shadow: 0 0 5px rgba(#4db6ac, 0.2);
   --shadow: 0 4rem 6rem rgba(0, 0, 0, 0.4);
   --checkbox-border: #adadad;
   --form-bg: #fafafa;
   --form-header-bg: #4db6ac;
-  --cancel-btn-hover: rgba(#e6f5f3, 0.2);
   --cancel-btn-bg: #fff;
   --cancel-btn-border: #c8c7c7;
   --p1: #f77b72;
   --p2: #ffb74d;
   --line-through: 2px solid #7c7f7ebf;
-  --scrollbar: #4aaca2;
+  --nav-bg: #99d5cf7e;
 }
 
 [data-theme='dark'] {
   --main-bg: #0e0e0f;
-  --header-bg: #1d2530;
-  --sidebar-bg: #0e0e0f;
+  --header-bg: #191b1b;
+  --sidebar-bg: #191b1b;
   --task-bg: #1e2020;
   --logo-fill: #4db6ac;
   --font-icon-primary: #e2e2e2;
@@ -57,14 +55,29 @@
   --form-header-bg: #232d2c;
   --cancel-btn-bg: #0e0e0f;
   --cancel-btn-border: #009688;
-  --p1: #f77b72;
-  --p2: #ffb74d;
   --line-through: #514c4c;
+  --nav-bg: #514c4c;
 }
 
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+
+  @include respond(tab-land) {
+    font-size: 50%;
+  }
+
+  @include respond(tab-port) {
+    font-size: 48%;
+  }
+
+  @include respond(phone) {
+    font-size: 42%;
+  }
+
+  @include respond(big-desktop) {
+    font-size: 68%;
+  }
 }
 
 body {
@@ -77,8 +90,23 @@ body {
 }
 
 main {
-  width: 120rem;
   width: 60vw;
   margin: 0 auto;
-  padding: 0 5rem;
+
+  @include respond(tab-land) {
+    padding: 0 10rem;
+    width: 100vw;
+  }
+
+  @include respond(tab-port) {
+    padding: 0 4rem;
+  }
+
+  @include respond(phone) {
+    padding: 0 2rem;
+  }
+
+  @include respond(big-desktop) {
+    padding: 0 7rem;
+  }
 }

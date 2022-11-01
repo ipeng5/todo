@@ -11,6 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@500&family=Roboto:wght@300;400;500;700&display=swap"
         rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="pencil.svg">
+
     <script defer src="./main.js"></script>
     <title>todo</title>
 </head>
@@ -18,6 +19,9 @@
 <body>
     <div class="content">
         <header class="header">
+
+
+
             <img src="" alt="" class="header header__logo">
             <h1 class="header header__text heading-1">
                 <svg class="icon--pencil">
@@ -35,7 +39,13 @@
 
         </header>
 
+        <input type="checkbox" class="nav__checkbox" id="nav__toggle">
+        <label for="nav__toggle" class="nav__button">
+            <span class="nav__icon">&nbsp;</span>
+        </label>
+
         <nav class="sidebar">
+
             <div class="sidebar__content">
                 <ul class="sidebar__filter">
                     <li id="filter--all"
@@ -168,7 +178,6 @@
                 Add task
             </div>
         </main>
-
         <div class="overlay--new hidden">
             <!-- <div class="overlay--new"> -->
             <div class="form__container form__container--new ">

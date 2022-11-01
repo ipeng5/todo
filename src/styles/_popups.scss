@@ -32,7 +32,6 @@
       &:hover {
         color: var(--primary);
         border: 2px solid var(--primary);
-        background-color: var(--cancel-btn-hover);
       }
     }
 
@@ -51,7 +50,7 @@
 .task-view {
   position: fixed;
   max-height: 35rem;
-  width: 55rem;
+  width: 62rem;
   box-shadow: var(--shadow);
   color: var(--font-icon-primary);
   padding: 3rem;
@@ -61,6 +60,11 @@
   display: flex;
   align-items: center;
   transition: all 0.3s;
+  transform: scale(0.5);
+
+  @include respond(phone) {
+    width: 80%;
+  }
 
   &--open {
     @include popupOpen;

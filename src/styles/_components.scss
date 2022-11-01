@@ -10,14 +10,26 @@ svg {
   z-index: 10;
   height: 1.8rem;
   width: 1.8rem;
+  min-height: 1.8rem;
+  min-width: 1.8rem;
   fill: var(--font-icon-primary);
   transition: all 0.2s;
 
   &--pencil {
-    height: 5rem;
-    width: 5rem;
+    height: 7rem;
+    width: 7rem;
     fill: var(--logo-fill);
     margin-right: 2rem;
+
+    @include respond(tab-land) {
+      height: 6rem;
+      width: 6rem;
+    }
+
+    @include respond(tab-port) {
+      height: 5rem;
+      width: 5rem;
+    }
   }
 
   &--edit {
@@ -35,6 +47,79 @@ svg {
     &:hover {
       fill: var(--primary-dark);
     }
+  }
+}
+
+.nav {
+  &__checkbox {
+    display: none;
+  }
+
+  &__button {
+    display: none;
+    cursor: pointer;
+
+    @include respond(tab-land) {
+      display: inline-block;
+      position: fixed;
+      height: 5rem;
+      width: 5rem;
+      top: 3.3rem;
+      right: 3.5rem;
+      background-color: var(--nav-bg);
+      border-radius: 5px;
+    }
+  }
+
+  &__icon {
+    position: relative;
+    top: 2.4rem;
+    left: 1rem;
+    cursor: pointer;
+
+    &,
+    &::before,
+    &::after {
+      @include respond(tab-land) {
+        width: 3rem;
+        height: 2px;
+        background-color: white;
+        display: inline-block;
+      }
+    }
+
+    &::before,
+    &::after {
+      @include respond(tab-land) {
+        content: '';
+        position: absolute;
+        left: 0;
+      }
+    }
+
+    &::before {
+      @include respond(tab-land) {
+        top: -1rem;
+      }
+    }
+
+    &::after {
+      @include respond(tab-land) {
+        top: 1rem;
+      }
+    }
+  }
+}
+
+.nav__checkbox:checked ~ .sidebar {
+  @include respond(tab-land) {
+    transform: translateX(0);
+    border-left: 2px solid var(--nav-bg);
+    width: 35%;
+  }
+
+  @include respond(phone) {
+    width: 75%;
   }
 }
 
@@ -88,18 +173,29 @@ svg {
     height: 2.5rem;
     width: 2.5rem;
     border-radius: 50%;
-    border: 3px solid var(--checkbox-border);
+    border: 0.3rem solid var(--checkbox-border);
     position: absolute;
     left: -2.4rem;
+
+    @include respond(phone) {
+      height: 2.2rem;
+      width: 2.2rem;
+      top: -1.2rem;
+      left: -2.3rem;
+    }
   }
 
   &__icon--check {
-    transform: translate(-19px, 1px);
+    transform: translate(-1.9rem, 0.1rem);
     height: 1.5rem;
     width: 1.5rem;
     opacity: 0;
     transition: opacity 0.2s;
     fill: var(--checkbox-border);
+
+    @include respond(phone) {
+      display: none;
+    }
 
     &:hover {
       opacity: 1;
@@ -120,6 +216,10 @@ svg {
   align-items: center;
   position: absolute;
   right: 4rem;
+
+  @include respond(tab-land) {
+    left: 4rem;
+  }
 }
 
 .theme-switch {
@@ -134,23 +234,32 @@ svg {
 
 .slider {
   background-color: #ccc;
-  bottom: 0;
-  cursor: pointer;
-  left: 0;
   position: absolute;
+  left: 0;
   right: 0;
   top: 0;
-  transition: 0.4s;
+  bottom: 0;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  @include respond(tab-land) {
+    width: 60px;
+    top: 1px;
+  }
+
+  @include respond(phone) {
+    transform: scale(0.8) translateX(-18px);
+  }
 }
 
 .slider:before {
   background-color: white;
-  bottom: 4px;
   content: '';
   height: 26px;
   left: 4px;
+  bottom: 4px;
   position: absolute;
-  transition: 0.4s;
+  transition: 0.3s;
   width: 26px;
 }
 
