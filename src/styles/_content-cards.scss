@@ -2,16 +2,6 @@
   @include scrollbar;
   overflow-y: scroll;
   max-height: 30vh;
-
-  &__item {
-    &--delete {
-      opacity: 0;
-    }
-
-    &:hover &--delete {
-      opacity: 1;
-    }
-  }
 }
 
 .task-card {
