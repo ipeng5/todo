@@ -21,6 +21,7 @@
   align-items: center;
   font-family: 'Baloo Thambi 2', cursive;
   overflow: hidden;
+  position: sticky;
 
   &__text {
     color: var(--logo);

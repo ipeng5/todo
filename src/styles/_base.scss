@@ -91,6 +91,7 @@ body {
 main {
   width: 60vw;
   margin: 0 auto;
+  position: sticky;
 
   @include respond(tab-land) {
     padding: 0 10rem;
