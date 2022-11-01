@@ -1,20 +1,3 @@
-$color-primary-superlight: #e6f5f3;
-$color-primary-lighter: #cceae7;
-$color-primary-light: #99d5cf;
-$color-primary: #4db6ac;
-$color-primary-dark: #009688;
-$color-grey-light-1: #fafafa;
-$color-grey-light-2: #ebebeb;
-$color-grey-light-3: #c2c2c2;
-$color-grey-light-3: #e2e2e2;
-$color-grey-dark-1: #adadad;
-$color-grey-dark-2: #414342;
-$color-p1: #f77b72;
-$color-p2: #ffb74d;
-$color-p3: #4db6ac;
-$color-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.4);
-$font-primary: 'Roboto', sans-serif;
-
 *,
 *::before,
 *::after {
@@ -23,15 +6,72 @@ $font-primary: 'Roboto', sans-serif;
   box-sizing: inherit;
 }
 
+:root {
+  --primary: #4db6ac;
+  --primary-dark: #009688;
+  --main-bg: #fff;
+  --header-bg: #4db6ac;
+  --sidebar-bg: #fafafa;
+  --task-bg: #fafafa;
+  --logo-fill: #fff;
+  --font-icon-primary: #414342;
+  --font-notice: #e2e2e2;
+  --delete-icon: #adadad;
+  --filter-hover: #ebebeb;
+  --filter-active: #cceae7;
+  --task-hover: #e6f5f3;
+  --input-bg: #fff;
+  --input-border: #e2e2e2;
+  --input-focus: #99d5cf;
+  --input-shadow: 0 0 5px rgba(#4db6ac, 0.2);
+  --shadow: 0 4rem 6rem rgba(0, 0, 0, 0.4);
+  --checkbox-border: #adadad;
+  --form-bg: #fafafa;
+  --form-header-bg: #4db6ac;
+  --cancel-btn-hover: rgba(#e6f5f3, 0.2);
+  --cancel-btn-bg: #fff;
+  --cancel-btn-border: #c8c7c7;
+  --p1: #f77b72;
+  --p2: #ffb74d;
+  --line-through: 2px solid #7c7f7ebf;
+  --scrollbar: #4aaca2;
+}
+
+[data-theme='dark'] {
+  --main-bg: #0e0e0f;
+  --header-bg: #1d2530;
+  --sidebar-bg: #0e0e0f;
+  --task-bg: #1e2020;
+  --logo-fill: #4db6ac;
+  --font-icon-primary: #e2e2e2;
+  --font-notice: #525252;
+  --filter-hover: #1e2020;
+  --filter-active: #1a3a37;
+  --task-hover: #161717;
+  --input-bg: #3b3f3f;
+  --input-border: transparent;
+  --input-focus: transparent;
+  --input-shadow: transparent;
+  --checkbox-border: #525252;
+  --form-bg: #232d2c;
+  --form-header-bg: #232d2c;
+  --cancel-btn-bg: #0e0e0f;
+  --cancel-btn-border: #009688;
+  --p1: #f77b72;
+  --p2: #ffb74d;
+  --line-through: #514c4c;
+}
+
 html {
   box-sizing: border-box;
   font-size: 62.5%;
 }
 
 body {
-  font-family: $font-primary;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
-  color: $color-grey-dark-2;
+  background-color: var(--main-bg);
+  color: var(--font-icon-primary);
   position: relative;
   word-wrap: break-word;
 }

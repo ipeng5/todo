@@ -19,8 +19,8 @@ class TaskView {
 
       // Reset form input and close form after submitting
       this.reset();
-      document.querySelector('.form__container--new').classList.toggle('form__container--open');
-      document.querySelector('.overlay--new').classList.toggle('hidden');
+      document.querySelector('.form__container--new').classList.remove('form__container--open');
+      document.querySelector('.overlay--new').classList.add('hidden');
       const formLowInput = document.querySelector('#new-form-low');
       const formLowLabel = document.querySelector('#new-form-low').nextElementSibling;
       const formMediumInput = document.querySelector('#new-form-medium');
@@ -49,8 +49,8 @@ class TaskView {
           const dataArr = [...new FormData(this)];
           const data = Object.fromEntries(dataArr);
           handler(data);
-          overlay.classList.toggle('hidden');
-          formContainer.classList.toggle('form__container--open');
+          overlay.classList.add('hidden');
+          formContainer.classList.remove('form__container--open');
 
           // when a task's due date changed from today to another day while today filter is active
           const filterToday = document.querySelector('#filter--today');
@@ -59,8 +59,8 @@ class TaskView {
             const taskCard = document
               .querySelector(`[data-id="${editForm.dataset.id}"]`)
               .closest('.task-card');
-            if (data.dueDate !== format(new Date(), 'yyyy-MM-dd'))
-              taskCard.classList.add('no-display');
+            if (data.dueDate !== format(new Date(), 'yyyy-MM-dd')) taskCard.style.display = 'none';
+            // taskCard.classList.add('no-display'); TODO
           }
 
           // when a task's due date changed from within 7 days to another day while 'next 7 days' is active
@@ -72,7 +72,8 @@ class TaskView {
               differenceInDays(new Date(data.dueDate), new Date()) > 7 ||
               differenceInDays(new Date(data.dueDate), new Date()) < 0
             ) {
-              taskCard.classList.add('no-display');
+              taskCard.style.display = 'none';
+              // taskCard.classList.add('no-display'); TODO
             }
           }
         });
@@ -87,7 +88,8 @@ class TaskView {
         e.target.classList.contains('function-delete') ||
         e.target.classList.contains('task--delete')
       ) {
-        e.target.closest('.task-card').classList.add('no-display');
+        e.target.closest('.task-card').style.display = 'none';
+        // e.target.closest('.task-card').classList.add('no-display'); TODO
         const taskDataset = e.target.closest('.task__details').dataset;
         const catDataset = e.target.closest('.task-card').dataset;
         handler(taskDataset.id, catDataset.catId);
@@ -152,8 +154,10 @@ class TaskView {
   }
 
   renderMsg(condition) {
-    if (condition === true) this._emptyMsg.classList.remove('no-display');
-    else this._emptyMsg.classList.add('no-display');
+    if (condition === true) this._emptyMsg.style.display = '';
+    // if (condition === true) this._emptyMsg.classList.remove('no-display'); TODO
+    else this._emptyMsg.style.display = 'none';
+    // else this._emptyMsg.classList.add('no-display'); TODO
   }
 
   // Render single new task card
@@ -264,7 +268,9 @@ class TaskView {
   renderViewModal(task, category) {
     document.querySelector('.task-view__title').textContent = task.title;
     document.querySelector('.task-view__category--text').textContent = category.categoryName;
-    document.querySelector('.task-view__priority--text').textContent = task.priority;
+    document.querySelector('.task-view__priority--text').textContent = task.priority
+      ? task.priority[0].toUpperCase() + task.priority.slice(1)
+      : '';
     document.querySelector('.task-view__date--text').textContent = task.dueDate;
     document.querySelector('.task-view__description--text').textContent = task.description;
   }

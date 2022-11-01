@@ -6,6 +6,7 @@ import categoryView from './views/categoryView.js';
 import taskView from './views/taskView.js';
 import taskTitleView from './views/taskTitleView.js';
 import updatePriority from './views/priorityBtnView.js';
+import switchTheme from './darkMode.js';
 
 const controlAddTask = function (id, data) {
   model.addTask(id, data);

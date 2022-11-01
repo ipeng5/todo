@@ -10,13 +10,13 @@ svg {
   z-index: 10;
   height: 1.8rem;
   width: 1.8rem;
-  fill: $color-grey-dark-2;
+  fill: var(--font-icon-primary);
   transition: all 0.2s;
 
   &--pencil {
     height: 5rem;
     width: 5rem;
-    fill: white;
+    fill: var(--logo-fill);
     margin-right: 2rem;
   }
 
@@ -24,16 +24,16 @@ svg {
     margin-left: 2rem;
 
     &:hover {
-      fill: $color-primary-dark;
+      fill: var(--primary-dark);
     }
   }
 
   &--delete {
-    fill: $color-grey-dark-1;
     margin-left: auto;
+    fill: var(--delete-icon);
 
     &:hover {
-      fill: $color-primary-dark;
+      fill: var(--primary-dark);
     }
   }
 }
@@ -46,7 +46,6 @@ svg {
   cursor: pointer;
 
   .icon {
-    color: $color-primary;
     border-radius: 50%;
     height: 2.5rem;
     width: 2.5rem;
@@ -55,11 +54,11 @@ svg {
 
   &:hover {
     background-color: transparent;
-    color: $color-primary;
+    color: var(--primary);
 
     .icon {
-      background-color: $color-primary;
-      fill: white;
+      background-color: var(--primary);
+      fill: var(--main-bg);
     }
   }
 
@@ -89,7 +88,7 @@ svg {
     height: 2.5rem;
     width: 2.5rem;
     border-radius: 50%;
-    border: 3px solid $color-grey-dark-1;
+    border: 3px solid var(--checkbox-border);
     position: absolute;
     left: -2.4rem;
   }
@@ -100,7 +99,7 @@ svg {
     width: 1.5rem;
     opacity: 0;
     transition: opacity 0.2s;
-    fill: $color-grey-dark-1;
+    fill: var(--checkbox-border);
 
     &:hover {
       opacity: 1;
@@ -108,11 +107,66 @@ svg {
   }
   &__box:checked ~ &__label &__icon--check {
     opacity: 1;
-    fill: white;
+    fill: var(--task-bg);
   }
 
   &__box:checked ~ &__label &__btn {
-    background-color: $color-grey-dark-1;
+    background-color: var(--checkbox-border);
+  }
+}
+
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 4rem;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  width: 60px;
+
+  input {
+    display: none;
+  }
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  background-color: white;
+  bottom: 4px;
+  content: '';
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0.4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: var(--primary-dark);
+
+  &:before {
+    transform: translateX(26px);
+  }
+}
+
+.slider.round {
+  border-radius: 34px;
+
+  &:before {
+    border-radius: 50%;
   }
 }
 
@@ -130,5 +184,5 @@ textarea {
 }
 
 ::placeholder {
-  color: $color-grey-light-3;
+  color: var(--input-border);
 }

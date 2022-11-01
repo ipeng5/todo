@@ -10,17 +10,21 @@
 
 .header {
   grid-column: 1 / -1;
-  background: $color-primary;
-  color: white;
+  background: var(--header-bg);
+  color: var(--logo-fill);
   padding-left: 2rem;
   display: flex;
   align-items: center;
   font-family: 'Baloo Thambi 2', cursive;
   overflow: hidden;
+
+  &__text {
+    color: var(--logo);
+  }
 }
 
 .sidebar {
-  background-color: $color-grey-light-1;
+  background-color: var(--sidebar-bg);
   padding: 3.2rem 3rem 6rem 3rem;
   display: flex;
   flex-direction: column;
@@ -40,12 +44,12 @@
     height: 4.5rem;
 
     &:hover {
-      background-color: $color-grey-light-2;
+      background-color: var(--filter-hover);
     }
 
     &--active,
     &--active:hover {
-      background-color: $color-primary-lighter;
+      background-color: var(--filter-active);
     }
   }
 
@@ -72,7 +76,7 @@
   gap: 1.5rem;
 
   &__empty-message {
-    color: $color-grey-light-3;
+    color: var(--font-notice);
     font-size: 3.5rem;
     font-weight: 300;
     padding-top: 5rem;

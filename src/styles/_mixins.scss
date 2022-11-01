@@ -8,26 +8,28 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba($color-primary-dark, 0.7);
+    background: var(--scrollbar);
 
     &:hover {
-      background: $color-primary-dark;
+      background: var(--primary-dark);
     }
   }
 }
 
 @mixin inputBox {
-  border: 2px solid $color-grey-light-3;
+  border: 2px solid var(--input-border);
   border-radius: 3px;
   font-size: 1.8rem;
-  color: $color-grey-dark-2;
+  color: var(--font-icon-primary);
   padding: 1rem;
   transition: all 0.3s;
+  background-color: var(--input-bg);
+  caret-color: var(--caret);
 
   &:focus {
     outline: 0;
-    border: 2px solid $color-primary-light;
-    box-shadow: 0 0 5px rgba($color-primary, 0.2);
+    border: 2px solid var(--input-focus);
+    box-shadow: var(--input-shadow);
   }
 }
 

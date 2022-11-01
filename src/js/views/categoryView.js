@@ -15,8 +15,8 @@ class CategoryView {
       const categoryName = document.querySelector('.popup__input--category').value;
       handler(nanoid(), categoryName);
       document.querySelector('.popup__input--category').value = '';
-      document.querySelector('.popup__category').style.display = 'none';
-      document.querySelector('.add-item--category').style.display = 'none';
+      document.querySelector('.popup__category').classList.toggle('no-display');
+      document.querySelector('.add-item--category').classList.toggle('no-display');
     });
 
     document.addEventListener('keypress', function (e) {
