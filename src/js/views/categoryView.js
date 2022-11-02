@@ -56,6 +56,7 @@ class CategoryView {
       document.querySelector('.popup__input--category').value = '';
       document.querySelector('.popup__category').classList.add('no-display');
       document.querySelector('.add-item--category').classList.remove('no-display');
+      document.querySelector('.nav__checkbox').checked = false;
     });
   }
 
@@ -76,6 +77,7 @@ class CategoryView {
         document.querySelector('.popup__input--category').value = '';
         document.querySelector('.popup__category').classList.add('no-display');
         document.querySelector('.add-item--category').classList.remove('no-display');
+        document.querySelector('.nav__checkbox').checked = false;
       }
     });
   }
