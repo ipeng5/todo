@@ -21,7 +21,6 @@
   align-items: center;
   font-family: 'Baloo Thambi 2', cursive;
   overflow: hidden;
-  position: sticky;
 
   &__text {
     color: var(--logo);
@@ -33,6 +32,11 @@
 
     @include respond(tab-port) {
       font-size: 6rem;
+    }
+
+    @include respond(phone) {
+      font-size: 5rem;
+      transform: translateX(-3.8rem);
     }
   }
 
@@ -47,10 +51,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // position: sticky;
   top: 0;
   z-index: 50;
   gap: 1rem;
+  overflow: auto;
 
   @include respond(tab-land) {
     position: fixed;
@@ -86,6 +90,7 @@
   &__category-title {
     padding-top: 1.2rem;
     padding-bottom: 1rem;
+    text-overflow: ellipsis;
   }
 }
 

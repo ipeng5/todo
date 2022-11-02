@@ -63,6 +63,7 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+  position: fixed;
 
   @include respond(tab-land) {
     font-size: 56.25%;
@@ -86,12 +87,12 @@ body {
   word-wrap: break-word;
   width: 100vw;
   height: 100vh;
+  overflow: auto;
 }
 
 main {
   width: 60vw;
   margin: 0 auto;
-  position: sticky;
 
   @include respond(tab-land) {
     padding: 0 10rem;
