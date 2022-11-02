@@ -10,6 +10,13 @@ class TaskPopupView {
   _btnViewClose = document.querySelector('.task-view--close');
   _btnSubmit = document.querySelector('.form__submit--new');
   _taskView = document.querySelector('.task-view');
+  _newForm = document.querySelector('.form__content--new');
+  _newFormLowInput = document.querySelector('#new-form-low');
+  _newFormLowLabel = document.querySelector('#new-form-low').nextElementSibling;
+  _newFormMediumInput = document.querySelector('#new-form-medium');
+  _newFormMediumLabel = document.querySelector('#new-form-medium').nextElementSibling;
+  _newFormHighInput = document.querySelector('#new-form-high');
+  _newFormHighLabel = document.querySelector('#new-form-high').nextElementSibling;
 
   constructor() {
     this._addHandlerShowPopup();
@@ -26,37 +33,18 @@ class TaskPopupView {
   cancelPopup() {
     this._overlay.classList.add('hidden');
     this._popup.classList.add('no-display');
-    const newForm = document.querySelector('.form__content--new');
-    const formLowInput = document.querySelector('#new-form-low');
-    const formLowLabel = document.querySelector('#new-form-low').nextElementSibling;
-    const formMediumInput = document.querySelector('#new-form-medium');
-    const formMediumLabel = document.querySelector('#new-form-medium').nextElementSibling;
-    const formHighInput = document.querySelector('#new-form-high');
-    const formHighLabel = document.querySelector('#new-form-high').nextElementSibling;
-    newForm.reset();
-    formLowLabel.classList.remove('form__priority-low--active');
-    formMediumLabel.classList.remove('form__priority-medium--active');
-    formHighLabel.classList.remove('form__priority-high--active');
-    formLowInput.checked = false;
-    formMediumInput.checked = false;
-    formHighInput.checked = false;
+    this._newForm.reset();
+    this._newFormLowLabel.classList.remove('form__priority-low--active');
+    this._newFormMediumLabel.classList.remove('form__priority-medium--active');
+    this._newFormHighLabel.classList.remove('form__priority-high--active');
+    this._newFormLowInput.checked = false;
+    this._newFormMediumInput.checked = false;
+    this._newFormHighInput.checked = false;
   }
 
   cancelEditPopup() {
     this._overlayEdit.classList.add('hidden');
     this._popupEdit.classList.add('no-display');
-    const formLowInput = document.querySelector('#edit-form-low');
-    const formLowLabel = document.querySelector('#edit-form-low').nextElementSibling;
-    const formMediumInput = document.querySelector('#edit-form-medium');
-    const formMediumLabel = document.querySelector('#edit-form-medium').nextElementSibling;
-    const formHighInput = document.querySelector('#edit-form-high');
-    const formHighLabel = document.querySelector('#edit-form-high').nextElementSibling;
-    formLowLabel.classList.remove('form__priority-low--active');
-    formMediumLabel.classList.remove('form__priority-medium--active');
-    formHighLabel.classList.remove('form__priority-high--active');
-    formLowInput.checked = false;
-    formMediumInput.checked = false;
-    formHighInput.checked = false;
   }
 
   closeView() {

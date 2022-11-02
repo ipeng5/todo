@@ -7,6 +7,7 @@ class TaskView {
   _data;
   _taskContainer = document.querySelector('.task-container');
   _emptyMsg = document.querySelector('.task-container__empty-message');
+  _parentElement = document.querySelector('.task-container');
 
   // Create a new task
   addHandlerCreateTask(handler) {
@@ -158,8 +159,7 @@ class TaskView {
 
   // Render single new task card
   render(categoryId, task) {
-    const parentElement = document.querySelector('.task-container');
-    parentElement.insertAdjacentHTML(
+    this._parentElement.insertAdjacentHTML(
       'afterbegin',
       `
          <div class="task-card" data-cat-id =${categoryId}>
