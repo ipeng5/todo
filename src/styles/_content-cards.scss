@@ -99,7 +99,10 @@
   }
 
   &__date {
-    min-width: 70px;
+    min-width: 75px;
+    @include respond(phone) {
+      font-size: 1.6rem;
+    }
   }
 
   &--category-container {
