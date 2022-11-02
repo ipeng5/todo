@@ -74,7 +74,7 @@ html {
   }
 
   @include respond(big-desktop) {
-    font-size: 75%;
+    font-size: 65%;
   }
 }
 
@@ -94,14 +94,13 @@ main {
   @include scrollbar;
   padding: 0 15rem;
   width: 100%;
-  height: calc(100vh - 15rem);
+  height: calc(100vh - 12rem);
   margin: 0 auto;
   overflow: auto;
 
   @include respond(tab-land) {
     padding: 0 10rem;
     width: 100vw;
-    height: calc(100vh - 12rem);
   }
 
   @include respond(tab-port) {
@@ -113,7 +112,6 @@ main {
   }
 
   @include respond(big-desktop) {
-    max-width: 120rem;
-    padding: 0 7rem;
+    padding: 0 20%;
   }
 }
