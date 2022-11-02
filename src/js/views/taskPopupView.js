@@ -19,13 +19,13 @@ class TaskPopupView {
   }
 
   showPopup() {
-    this._overlay.classList.toggle('hidden');
-    this._popup.classList.toggle('no-display');
+    this._overlay.classList.remove('hidden');
+    this._popup.classList.remove('no-display');
   }
 
   cancelPopup() {
-    this._overlay.classList.toggle('hidden');
-    this._popup.classList.toggle('no-display');
+    this._overlay.classList.add('hidden');
+    this._popup.classList.add('no-display');
     const newForm = document.querySelector('.form__content--new');
     const formLowInput = document.querySelector('#new-form-low');
     const formLowLabel = document.querySelector('#new-form-low').nextElementSibling;
@@ -43,8 +43,8 @@ class TaskPopupView {
   }
 
   cancelEditPopup() {
-    this._overlayEdit.classList.toggle('hidden');
-    this._popupEdit.classList.toggle('no-display');
+    this._overlayEdit.classList.add('hidden');
+    this._popupEdit.classList.add('no-display');
     const formLowInput = document.querySelector('#edit-form-low');
     const formLowLabel = document.querySelector('#edit-form-low').nextElementSibling;
     const formMediumInput = document.querySelector('#edit-form-medium');
@@ -60,8 +60,8 @@ class TaskPopupView {
   }
 
   closeView() {
-    this._overlayView.classList.toggle('hidden');
-    this._taskView.classList.toggle('no-display');
+    this._overlayView.classList.add('hidden');
+    this._taskView.classList.add('no-display');
   }
 
   _addHandlerShowPopup() {

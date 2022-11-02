@@ -19,7 +19,7 @@ class TaskView {
 
       // Reset form input and close form after submitting
       this.reset();
-      document.querySelector('.form__container--new').classList.remove('no-display');
+      document.querySelector('.form__container--new').classList.add('no-display');
       document.querySelector('.overlay--new').classList.add('hidden');
       const formLowInput = document.querySelector('#new-form-low');
       const formLowLabel = document.querySelector('#new-form-low').nextElementSibling;
@@ -50,7 +50,7 @@ class TaskView {
           const data = Object.fromEntries(dataArr);
           handler(data);
           overlay.classList.add('hidden');
-          formContainer.classList.remove('no-display');
+          formContainer.classList.add('no-display');
 
           // When a task's due date changed from today to another day while today filter is active
           const filterToday = document.querySelector('#filter--today');
@@ -108,8 +108,8 @@ class TaskView {
         const dataset = e.target.closest('.task__details').dataset;
         const categoryDataset = e.target.closest('.task-card').dataset;
         editForm.setAttribute('data-id', dataset.id);
-        overlay.classList.toggle('hidden');
-        formContainer.classList.toggle('no-display');
+        overlay.classList.remove('hidden');
+        formContainer.classList.remove('no-display');
         handler(dataset.id, categoryDataset.catId);
       }
     });
@@ -121,8 +121,8 @@ class TaskView {
     const viewModal = document.querySelector('.task-view');
     this._taskContainer.addEventListener('click', e => {
       if (e.target.classList.contains('task') || e.target.classList.contains('task__title')) {
-        overlay.classList.toggle('hidden');
-        viewModal.classList.toggle('no-display');
+        overlay.classList.remove('hidden');
+        viewModal.classList.remove('no-display');
         const id = e.target.lastElementChild.dataset.id;
         const catId = e.target.closest('.task-card').dataset.catId;
         handler(id, catId);
@@ -197,7 +197,6 @@ class TaskView {
   renderTaskUpdate(task) {
     const details = document.querySelector(`[data-id="${task.id}"]`);
     const taskItem = details.closest('.task');
-    const checkbox = document.getElementById(`${task.id}`);
     const text = taskItem.firstElementChild.lastElementChild;
     const taskDate = details.firstElementChild;
 
@@ -207,7 +206,6 @@ class TaskView {
       `task--${task.priority ? task.priority : ''}`,
       `task--${task.completed ? 'completed' : ''}`
     );
-    checkbox.checked = true;
     text.textContent = task.title;
     taskDate.textContent = task.dueDate;
   }
