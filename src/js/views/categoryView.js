@@ -56,6 +56,11 @@ class CategoryView {
       document.querySelector('.popup__input--category').value = '';
       document.querySelector('.popup__category').classList.add('no-display');
       document.querySelector('.add-item--category').classList.remove('no-display');
+      if (
+        e.target.classList.contains('function-delete') ||
+        e.target.classList.contains('categories__item--delete')
+      )
+        return;
       document.querySelector('.nav__checkbox').checked = false;
     });
   }
