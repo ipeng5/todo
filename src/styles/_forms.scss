@@ -87,7 +87,8 @@
 
     &--input {
       @include inputBox;
-      height: 3.5rem;
+      padding-top: 1.2rem;
+      padding-bottom: 1.2rem;
     }
   }
 
@@ -101,6 +102,7 @@
   &__date--input {
     @include inputBox;
     font-family: inherit;
+    width: 100%;
   }
 
   &__submit {

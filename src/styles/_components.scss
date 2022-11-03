@@ -42,7 +42,7 @@ svg {
     margin-right: 0.7rem;
 
     @include respond(tab-land) {
-      fill: var(--primary-dark);
+      fill: var(--cancel-btn-border);
     }
 
     &:hover {
@@ -54,7 +54,7 @@ svg {
     margin-left: auto;
 
     @include respond(tab-land) {
-      fill: var(--primary-dark);
+      fill: var(--cancel-btn-border);
     }
 
     &:hover {
