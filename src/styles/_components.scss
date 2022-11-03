@@ -81,6 +81,10 @@ svg {
       @include respond(tab-port) {
         top: 2.1rem;
       }
+
+      @include respond(phone) {
+        right: 2rem;
+      }
     }
   }
 
@@ -289,7 +293,7 @@ svg {
   }
 
   @include respond(phone) {
-    transform: scale(0.8) translateX(-18px);
+    transform: scale(0.8) translateX(-30px);
   }
 }
 
