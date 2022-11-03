@@ -121,13 +121,12 @@ class TaskView {
     const overlay = document.querySelector('.overlay--view');
     const viewModal = document.querySelector('.task-view');
     this._taskContainer.addEventListener('click', e => {
-      if (e.target.classList.contains('task') || e.target.classList.contains('task__title')) {
+      if (e.target.classList.contains('task') || e.target.classList.contains('task__title'))
         overlay.classList.remove('hidden');
-        viewModal.classList.remove('no-display');
-        const id = e.target.lastElementChild.dataset.id;
-        const catId = e.target.closest('.task-card').dataset.catId;
-        handler(id, catId);
-      }
+      viewModal.classList.remove('no-display');
+      const id = e.target.closest('.task').lastElementChild.dataset.id;
+      const catId = e.target.closest('.task-card').dataset.catId;
+      handler(id, catId);
     });
   }
 
