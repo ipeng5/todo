@@ -41,6 +41,10 @@ svg {
   &--edit {
     margin-right: 0.7rem;
 
+    @include respond(tab-land) {
+      fill: var(--primary-dark);
+    }
+
     &:hover {
       fill: var(--primary-dark);
     }
@@ -48,6 +52,10 @@ svg {
 
   &--delete {
     margin-left: auto;
+
+    @include respond(tab-land) {
+      fill: var(--primary-dark);
+    }
 
     &:hover {
       fill: var(--primary-dark);

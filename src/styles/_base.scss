@@ -92,14 +92,14 @@ body {
 
 main {
   @include scrollbar;
-  padding: 0 15rem;
+  padding: 0 8rem;
   width: 100%;
   height: calc(100vh - 12rem);
   margin: 0 auto;
   overflow: auto;
 
   @include respond(tab-land) {
-    padding: 0 10rem;
+    padding: 0 5rem;
     width: 100vw;
   }
 
@@ -112,6 +112,6 @@ main {
   }
 
   @include respond(big-desktop) {
-    padding: 0 20%;
+    padding: 0 18rem;
   }
 }
