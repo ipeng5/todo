@@ -126,6 +126,10 @@
       margin-left: 2rem;
     }
   }
+
+  @include respond(phone) {
+    gap: 1rem;
+  }
 }
 
 .overlay--new,
