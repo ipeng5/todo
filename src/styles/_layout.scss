@@ -8,7 +8,11 @@
   overflow: hidden;
 
   @include respond(tab-land) {
-    grid-template-rows: 12rem 1fr;
+    grid-template-rows: 10rem 1fr;
+  }
+
+  @include respond(tab-port) {
+    grid-template-rows: 9rem 1fr;
   }
 }
 
@@ -60,10 +64,15 @@
     position: fixed;
     transition: all 0.3s;
     right: 0;
-    transform: translateX(100%);
-    top: 12rem;
-    height: calc(100vh - 12rem);
+    top: 10rem;
+    height: calc(100vh - 10rem);
     background-color: var(--sidebar-bg-dark);
+    transform: translateX(100%);
+  }
+
+  @include respond(tab-port) {
+    top: 9rem;
+    height: calc(100vh - 9rem);
   }
 
   &__filter-option {

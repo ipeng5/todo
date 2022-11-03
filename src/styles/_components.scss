@@ -73,6 +73,14 @@ svg {
       right: 3.5rem;
       background-color: var(--nav-bg);
       border-radius: 5px;
+
+      @include respond(tab-land) {
+        top: 2.6rem;
+      }
+
+      @include respond(tab-port) {
+        top: 2.1rem;
+      }
     }
   }
 
@@ -83,9 +91,19 @@ svg {
     cursor: pointer;
     transition: all 0.2s;
 
+    @include respond(tab-land) {
+      top: 2.2rem;
+    }
+
+    @include respond(tab-port) {
+      top: 2.35rem;
+    }
+
     &,
     &::before,
     &::after {
+      transition: all 0.3s;
+
       @include respond(tab-land) {
         width: 3rem;
         height: 2px;
@@ -121,11 +139,11 @@ svg {
   }
   &__checkbox:checked + &__button &__icon::before {
     top: 0;
-    transform: rotate(45deg);
+    transform: rotate(135deg);
   }
   &__checkbox:checked + &__button &__icon::after {
     top: 0;
-    transform: rotate(-45deg);
+    transform: rotate(-135deg);
   }
 }
 

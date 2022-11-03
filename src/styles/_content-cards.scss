@@ -112,8 +112,12 @@
     font-size: 5rem;
     color: var(--primary);
 
+    @include respond(tab-land) {
+      font-size: 4rem;
+    }
+
     @include respond(phone) {
-      font-size: 4.5rem;
+      font-size: 3rem;
     }
   }
 }
