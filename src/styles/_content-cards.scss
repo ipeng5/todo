@@ -35,6 +35,8 @@
   }
 
   &__title {
+    text-overflow: ellipsis;
+
     @include respond(phone) {
       padding: 0 1rem;
     }
@@ -86,6 +88,11 @@
   &__head {
     display: flex;
     align-items: center;
+    gap: 1rem;
+
+    @include respond(phone) {
+      gap: 0;
+    }
   }
 
   &__details {
