@@ -4,6 +4,7 @@
   "description": "A todo list application",
   "main": "index.js",
   "scripts": {
+    "compile:sass": "node-sass src/styles/main.scss dist/main.css",
     "build": "webpack",
     "watch": "webpack --progress --watch"
   },
@@ -18,11 +19,7 @@
   },
   "homepage": "https://github.com/ipeng5/todo#readme",
   "devDependencies": {
-    "css-loader": "^6.7.1",
     "node-sass": "^7.0.3",
-    "sass": "^1.55.0",
-    "sass-loader": "^13.1.0",
-    "style-loader": "^3.3.1",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
   },

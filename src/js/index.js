@@ -1,4 +1,3 @@
-import '../styles/main.scss';
 import * as model from './model.js';
 import categoryPopupView from './views/categoryPopupView.js';
 import taskPopupView from './views/taskPopupView.js';
