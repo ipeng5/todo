@@ -48,7 +48,6 @@
   --input-bg: #3b3f3f;
   --input-border: transparent;
   --input-focus: transparent;
-  --input-shadow: transparent;
   --checkbox-border: #525252;
   --form-bg: #232d2c;
   --form-header-bg: #232d2c;
@@ -336,8 +335,7 @@ main {
   padding-bottom: 1.2rem; }
   .form__title--input:focus {
     outline: 0;
-    border: 2px solid var(--input-focus);
-    box-shadow: var(--input-shadow); }
+    border: 2px solid var(--input-focus); }
 
 .form__description--input {
   border: 2px solid var(--input-border);
@@ -352,8 +350,7 @@ main {
   height: 8rem; }
   .form__description--input:focus {
     outline: 0;
-    border: 2px solid var(--input-focus);
-    box-shadow: var(--input-shadow); }
+    border: 2px solid var(--input-focus); }
   .form__description--input::-webkit-scrollbar {
     width: 6px; }
   .form__description--input::-webkit-scrollbar-track {
@@ -376,8 +373,7 @@ main {
   width: 100%; }
   .form__date--input:focus {
     outline: 0;
-    border: 2px solid var(--input-focus);
-    box-shadow: var(--input-shadow); }
+    border: 2px solid var(--input-focus); }
 
 .form__submit {
   margin: 1rem auto 0 auto;
@@ -562,8 +558,7 @@ main {
     width: 28rem; }
     .popup__input:focus {
       outline: 0;
-      border: 2px solid var(--input-focus);
-      box-shadow: var(--input-shadow); }
+      border: 2px solid var(--input-focus); }
 
 .popup__btns {
   display: flex;
