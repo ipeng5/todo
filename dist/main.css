@@ -682,16 +682,10 @@ svg {
         transform: translateX(1rem); } }
   .icon--edit {
     margin-right: 0.7rem; }
-    @media (max-width: 75em) {
-      .icon--edit {
-        fill: var(--cancel-btn-border); } }
     .icon--edit:hover {
       fill: var(--primary-dark); }
   .icon--delete {
     margin-left: auto; }
-    @media (max-width: 75em) {
-      .icon--delete {
-        fill: var(--cancel-btn-border); } }
     .icon--delete:hover {
       fill: var(--primary-dark); }
 
